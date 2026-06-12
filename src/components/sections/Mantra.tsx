@@ -1,10 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { revealOnEnter } from '@/lib/reveal'
 
 const mantra = [
   'Sound is sanctuary.',
@@ -20,24 +17,13 @@ export function Mantra() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.mantra-line').forEach((line, i) => {
-        gsap.from(line, {
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: line,
-            start: 'top 88%',
-            once: true,
-          },
-          delay: i * 0.05,
-        })
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
+    const root = sectionRef.current
+    if (!root) return
+    const disposers: Array<() => void> = []
+    ;(async () => {
+      disposers.push(await revealOnEnter(root.querySelectorAll('.mantra-line'), { y: 30, duration: 0.8, stagger: 0.05 }))
+    })()
+    return () => disposers.forEach((d) => d())
   }, [])
 
   return (

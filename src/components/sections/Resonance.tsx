@@ -1,10 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { revealOnEnter } from '@/lib/reveal'
 
 const resonances = [
   { label: '108', unit: 'Hz', desc: 'Sacred frequency', color: 'text-gold' },
@@ -17,22 +14,13 @@ export function Resonance() {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.res-cell', {
-        y: 25,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 80%',
-          once: true,
-        },
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
+    const root = sectionRef.current
+    if (!root) return
+    const disposers: Array<() => void> = []
+    ;(async () => {
+      disposers.push(await revealOnEnter(root.querySelectorAll('.res-cell'), { y: 25, duration: 0.7, stagger: 0.1 }))
+    })()
+    return () => disposers.forEach((d) => d())
   }, [])
 
   return (
