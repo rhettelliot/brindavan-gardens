@@ -11,40 +11,36 @@ const config: Config = {
       colors: {
         // Brindavan Gardens — sacred, shoegaze, golden haze
         void: {
-          DEFAULT: '#050402',
-          raised: '#0C0A07',
-          elevated: '#141009',
-          warm: '#1A150D',
+          DEFAULT: '#020203',
+          raised: '#0A0A0B',
+          elevated: '#121214',
+          warm: '#1A1A1C',
         },
-        // Sacred Gold — warm, devotional, luminous
+        // Solar Gold — vibrant, energetic, luminous
         gold: {
-          DEFAULT: '#D4A843',
-          dim: '#A68535',
-          glow: '#D4A84326',
-          pale: '#E8CC7A',
+          DEFAULT: '#FF6B35',
+          dim: '#D45B25',
+          glow: '#FF6B3526',
+          pale: '#FFB088',
         },
-        // Rose Mist — soft, dreamlike, reverb wash
-        mist: {
-          DEFAULT: '#C9A0B8',
-          dim: '#9A7A8E',
-          glow: '#C9A0B826',
+        // Electric Blue — sharp, digital, synthetic
+        blue: {
+          DEFAULT: '#007AFF',
+          dim: '#005BB5',
+          glow: '#007AFF26',
+          pale: '#80B5FF',
         },
-        // Deep Indigo — night sky, contemplation
-        indigo: {
-          deep: '#2D1B4E',
-          mid: '#4A2D7A',
-        },
-        // Warm light — for body text on dark
+        // Light — for body text on dark
         light: {
           DEFAULT: '#E8DDD0',
           dim: '#A8998A',
           muted: '#6B5F54',
         },
         edge: {
-          faint: 'rgba(212,168,67,0.06)',
-          subtle: 'rgba(212,168,67,0.12)',
-          medium: 'rgba(212,168,67,0.2)',
-          bright: 'rgba(212,168,67,0.4)',
+          faint: 'rgba(255,107,53,0.06)',
+          subtle: 'rgba(255,107,53,0.12)',
+          medium: 'rgba(255,107,53,0.2)',
+          bright: 'rgba(255,107,53,0.4)',
         },
       },
       fontFamily: {

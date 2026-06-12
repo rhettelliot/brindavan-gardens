@@ -22,14 +22,12 @@ export function Gatekeeper() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.2 })
 
-      // Golden thread draws through — slow, devotional
       tl.fromTo(
         lineRef.current,
         { scaleX: 0 },
         { scaleX: 1, duration: 2, ease: 'power2.inOut' }
       )
 
-      // Title dissolves in from blur
       tl.fromTo(
         titleRef.current,
         { opacity: 0, filter: 'blur(12px)', y: 20 },
@@ -37,7 +35,6 @@ export function Gatekeeper() {
         '-=1.2'
       )
 
-      // Subtitle dissolves
       tl.fromTo(
         subRef.current,
         { opacity: 0, y: 15 },
@@ -45,7 +42,6 @@ export function Gatekeeper() {
         '-=0.6'
       )
 
-      // Enter button fades in
       tl.fromTo(
         btnRef.current,
         { opacity: 0, y: 15 },
@@ -77,46 +73,40 @@ export function Gatekeeper() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-50 bg-[#050402] flex flex-col items-center justify-center"
+      className="fixed inset-0 z-50 bg-void flex flex-col items-center justify-center"
     >
-      {/* Warm vignette background */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background:
-            'radial-gradient(ellipse at 50% 50%, rgba(212,168,67,0.08) 0%, rgba(45,27,78,0.06) 40%, transparent 70%)',
+          background: 'radial-gradient(ellipse at 50% 50%, rgba(255,107,53,0.08) 0%, rgba(0,122,255,0.06) 40%, transparent 70%)',
         }}
       />
 
-      {/* Golden thread */}
       <div
         ref={lineRef}
         className="absolute top-1/2 left-0 right-0 h-px origin-left"
         style={{
-          background: 'linear-gradient(90deg, transparent, #D4A843, rgba(201,160,184,0.5), #D4A843, transparent)',
+          background: 'linear-gradient(90deg, transparent, #FF6B35, rgba(0,122,255,0.5), #FF queB35, transparent)',
         }}
       />
 
-      {/* Content */}
       <div className="relative z-10 text-center px-6">
-        {/* Small decorative symbol */}
-        <div className="text-gold dim text-2xl mb-6 animate-shimmer" style={{ color: '#A68535' }}>
+        <div className="text-gold-dim text-2xl mb-6 animate-shimmer">
           ◦
-        </div>
+        </div >
 
         <div ref={titleRef} className="opacity-0" style={{ filter: 'blur(12px)' }}>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[8rem] font-semibold italic tracking-[-0.01em] leading-[0.88]" style={{ color: '#E8CC7A' }}>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-[8rem] font-semibold italic tracking-[-0.01em] leading-[0.88] text-gold-pale">
             Brindavan
           </h1>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[8rem] font-normal tracking-[-0.01em] leading-[0.88]" style={{ color: '#E8DDD0' }}>
+          <h1 className="font-display text-5xl md:text-7xl lg:text-[8rem] font-normal tracking-[-0.01em] leading-[0.88] text-light">
             Gardens
           </h1>
-        </div>
+        </div >
 
         <p
           ref={subRef}
-          className="opacity-0 font-mono text-[10px] tracking-[0.35em] uppercase mt-6"
-          style={{ color: '#A68535' }}
+          className="opacity-0 font-mono text-[10px] tracking-[0.35em] uppercase mt-6 text-gold-dim"
         >
           Spiritual · Shoegaze · Dream
         </p>
@@ -125,25 +115,23 @@ export function Gatekeeper() {
           ref={btnRef}
           onClick={handleEnter}
           className="opacity-0 mt-10 font-mono text-[10px] tracking-[0.25em] uppercase px-8 py-3 border border-gold/40 text-gold btn-warm hover:bg-gold hover:text-void hover:border-gold"
-          style={{ color: '#D4A843', borderColor: 'rgba(212,168,67,0.4)' }}
         >
           Enter the Garden
         </button>
-      </div>
+      </div >
 
-      {/* Corner markers — warm, devotional */}
-      <div className="absolute top-6 left-6 font-mono text-[9px] tracking-[0.15em]" style={{ color: '#A68535' }}>
+      <div className="absolute top-6 left-6 font-mono text-[9px] tracking-[0.15em] text-gold-dim">
         MR-001
-      </div>
-      <div className="absolute top-6 right-6 font-mono text-[9px] tracking-[0.15em] animate-shimmer" style={{ color: '#D4A843' }}>
+      </div >
+      <div className="absolute top-6 right-6 font-mono text-[9px] tracking-[0.15em] animate-shimmer text-gold">
         ◦ OM
-      </div>
-      <div className="absolute bottom-6 left-6 font-mono text-[9px] tracking-[0.15em]" style={{ color: '#6B5F54' }}>
+      </div >
+      <div className="absolute bottom-6 left-6 font-mono text-[9px] tracking-[0.15em] text-light-muted">
         108Hz
-      </div>
-      <div className="absolute bottom-6 right-6 font-mono text-[9px] tracking-[0.15em]" style={{ color: '#A68535' }}>
+      </div >
+      <div className="absolute bottom-6 right-6 font-mono text-[9px] tracking-[0.15em] text-gold-dim">
         Seattle · 2024
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }

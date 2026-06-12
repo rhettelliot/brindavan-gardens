@@ -43,7 +43,7 @@ export function Mantra() {
   return (
     <section ref={sectionRef} id="mantra" className="py-32 md:py-48">
       <div className="max-w-5xl mx-auto px-6 md:px-12">
-        <div className="section-label mb-20">Mantra /</div>
+        <div className="section-label mb-20">Mantra /</div >
 
         <div className="space-y-7 md:space-y-9">
           {mantra.map((line, i) => (
@@ -51,26 +51,19 @@ export function Mantra() {
               key={i}
               className={`mantra-line font-display text-2xl md:text-4xl lg:text-5xl leading-[1.15] tracking-[-0.01em] ${
                 i === mantra.length - 1
-                  ? 'font-semibold italic'
+                  ? 'font-semibold italic text-gold-pale'
                   : i === 0
-                    ? 'font-semibold'
-                    : ''
+                    ? 'font-semibold text-blue'
+                    : 'text-light'
               }`}
-              style={{
-                color: i === mantra.length - 1
-                  ? '#E8CC7A'
-                  : i === 0
-                    ? '#C9A0B8'
-                    : '#E8DDD0',
-              }}
             >
               {line}
             </p>
           ))}
-        </div>
+        </div >
 
         <div className="mt-16 gold-thread w-24" />
-      </div>
+      </div >
     </section>
   )
 }

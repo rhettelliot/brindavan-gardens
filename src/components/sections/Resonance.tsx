@@ -7,10 +7,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const resonances = [
-  { label: '108', unit: 'Hz', desc: 'Sacred frequency', color: '#D4A843' },
-  { label: '∞', unit: 'REVERB', desc: 'Cathedral decay', color: '#C9A0B8' },
-  { label: '7', unit: 'LAYERS', desc: 'Guitar walls', color: '#D4A843' },
-  { label: '1', unit: 'MANTRA', desc: 'Upekṣā', color: '#C9A0B8' },
+  { label: '108', unit: 'Hz', desc: 'Sacred frequency', color: 'text-gold' },
+  { label: '∞', unit: 'REVERB', desc: 'Cathedral decay', color: 'text-blue' },
+  { label: '7', unit: 'LAYERS', desc: 'Guitar walls', color: 'text-gold' },
+  { label: '1', unit: 'MANTRA', desc: 'Upekṣā', color: 'text-blue' },
 ]
 
 export function Resonance() {
@@ -38,31 +38,25 @@ export function Resonance() {
   return (
     <section ref={sectionRef} className="py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-[1px]" style={{ backgroundColor: 'rgba(212,168,67,0.06)' }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-edge-faint">
           {resonances.map((r) => (
             <div
               key={r.label}
-              className="res-cell bg-[#050402] p-6 md:p-10 flex flex-col items-center justify-center text-center"
+              className="res-cell bg-void p-6 md:p-10 flex flex-col items-center justify-center text-center"
             >
-              <div
-                className="font-mono text-4xl md:text-5xl font-bold tracking-[-0.04em]"
-                style={{ color: r.color }}
-              >
+              <div className={`font-mono text-4xl md:text-5xl font-bold tracking-[-0.04em] ${r.color}`}>
                 {r.label}
-              </div>
-              <div
-                className="font-mono text-[9px] tracking-[0.25em] uppercase mt-2 opacity-70"
-                style={{ color: r.color }}
-              >
+              </div >
+              <div className={`font-mono text-[9px] tracking-[0.25em] uppercase mt-2 opacity-70 ${r.color}`}>
                 {r.unit}
-              </div>
-              <div className="font-mono text-[8px] tracking-[0.15em] uppercase mt-1" style={{ color: '#6B5F54' }}>
+              </div >
+              <div className="font-mono text-[8px] tracking-[0.15em] uppercase mt-1 text-light-muted">
                 {r.desc}
-              </div>
-            </div>
+              </div >
+            </div >
           ))}
-        </div>
-      </div>
+        </div >
+      </div >
     </section>
   )
 }

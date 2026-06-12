@@ -32,32 +32,30 @@ export function CTASection() {
       <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
         <div className="cta-content">
           {/* Symbol */}
-          <div className="text-3xl mb-6 animate-shimmer" style={{ color: '#A68535' }}>
+          <div className="text-3xl mb-6 animate-shimmer text-gold-dim">
             ✦
           </div>
 
           <h2
-            className="font-display text-3xl md:text-5xl lg:text-6xl font-semibold italic tracking-[-0.02em] leading-[1.05]"
-            style={{ color: '#E8CC7A' }}
+            className="font-display text-3xl md:text-5xl lg:text-6xl font-semibold italic tracking-[-0.02em] leading-[1.05] text-gold-pale"
           >
             Bring your frequency to the garden.
           </h2>
-          <p className="font-mono text-[10px] tracking-[0.2em] uppercase mt-4" style={{ color: '#A68535' }}>
+          <p className="font-mono text-[10px] tracking-[0.2em] uppercase mt-4 text-gold-dim">
             Manteis Recordings — accepting demos from artists in resonance
           </p>
 
           <div className="mt-10">
             <a
               href="mailto:demo@manteisrecordings.com"
-              className="inline-block font-mono text-[10px] tracking-[0.25em] uppercase px-8 py-4 border btn-warm"
-              style={{ borderColor: '#D4A843', color: '#D4A843' }}
+              className="inline-block font-mono text-[10px] tracking-[0.25em] uppercase px-8 py-4 border btn-warm text-gold border-gold hover:bg-gold hover:text-void"
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#D4A843'
-                e.currentTarget.style.color = '#050402'
+                e.currentTarget.style.backgroundColor = '#FF6B35'
+                e.currentTarget.style.color = '#020203'
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'transparent'
-                e.currentTarget.style.color = '#D4A843'
+                e.currentTarget.style.color = '#FF6B35'
               }}
             >
               Submit Demo
