@@ -53,8 +53,6 @@ export function Gatekeeper() {
     return () => ctx.revert()
   }, [entered])
 
-  if (entered) return null
-
   const handleEnter = () => {
     gsap.to(containerRef.current, {
       opacity: 0,
@@ -70,67 +68,107 @@ export function Gatekeeper() {
     })
   }
 
+  useEffect(() => {
+    if (entered) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        handleEnter()
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [entered])
+
+  if (entered) return null
+
   return (
     <div
       ref={containerRef}
       data-gate=""
-      className="fixed inset-0 z-50 bg-void flex flex-col items-center justify-center"
+      role="dialog"
+      aria-modal="false"
+      aria-label="Welcome to Brindavan Gardens"
+      className="fixed inset-0 z-50 bg-void flex flex-col items-center justify-center overflow-hidden"
     >
+      {/* Mystical glow layering */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at 50% 50%, rgba(255,107,53,0.08) 0%, rgba(0,122,255,0.06) 40%, transparent 70%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(212,168,67,0.15) 0%, rgba(62,123,153,0.08) 35%, rgba(2,2,3,0.95) 75%, #020203 100%)',
         }}
       />
 
+      {/* Subtle digital grid or line */}
       <div
         ref={lineRef}
-        className="absolute top-1/2 left-0 right-0 h-px origin-left"
+        className="absolute top-1/2 left-0 right-0 h-[2px] origin-left opacity-30 shadow-[0_0_10px_rgba(212,168,67,0.5)]"
         style={{
-          background: 'linear-gradient(90deg, transparent, #FF6B35, rgba(0,122,255,0.5), #FF6B35, transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(212,168,67,0.8) 25%, rgba(62,123,153,0.8) 50%, rgba(212,168,67,0.8) 75%, transparent)',
         }}
       />
 
-      <div className="relative z-10 text-center px-6">
-        <div className="text-gold-dim text-2xl mb-6 animate-shimmer">
-          ◦
-        </div >
+      <div className="relative z-10 flex flex-col items-center text-center px-6">
+        {/* Rotating Sacred Geometry Emblem */}
+        <div className="relative w-28 h-28 md:w-36 md:h-36 mb-10 flex items-center justify-center">
+          <svg 
+            className="w-full h-full text-gold/30 animate-[spin_40s_linear_infinite]" 
+            viewBox="0 0 100 100" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="0.5"
+          >
+            <circle cx="50" cy="50" r="45" strokeDasharray="3 3" />
+            <circle cx="50" cy="50" r="30" />
+            <circle cx="50" cy="50" r="15" strokeWidth="0.25" />
+            {/* Concentric patterns */}
+            <polygon points="50,5 95,50 50,95 5,50" />
+            <polygon points="50,15 85,50 50,85 15,50" strokeDasharray="1 1" />
+            <polygon points="50,5 72.5,50 50,95 27.5,50" />
+            <polygon points="50,5 95,50 50,95 5,50" transform="rotate(45 50 50)" />
+          </svg>
+          <div className="absolute text-gold-pale text-lg animate-[pulse_4s_ease-in-out_infinite]">
+            ✦
+          </div>
+        </div>
 
         <div ref={titleRef} className="opacity-0" style={{ filter: 'blur(12px)' }}>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[8rem] font-semibold italic tracking-[-0.01em] leading-[0.88] text-gold-pale">
+          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-semibold italic tracking-[-0.03em] leading-[0.8] text-gold-pale text-glow-gold">
             Brindavan
-          </h1>
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[8rem] font-normal tracking-[-0.01em] leading-[0.88] text-light">
+          </h2>
+          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-normal tracking-[-0.03em] leading-[0.8] text-light mt-2">
             Gardens
-          </h1>
+          </h2>
         </div >
 
         <p
           ref={subRef}
-          className="opacity-0 font-mono text-[10px] tracking-[0.35em] uppercase mt-6 text-gold-dim"
+          className="opacity-0 font-mono text-[11px] tracking-[0.4em] uppercase mt-10 text-gold-dim"
         >
           Spiritual · Shoegaze · Dream
         </p>
 
-        <button
-          ref={btnRef}
-          onClick={handleEnter}
-          className="opacity-0 mt-10 font-mono text-[10px] tracking-[0.25em] uppercase px-8 py-3 border border-gold/40 text-gold btn-warm hover:bg-gold hover:text-void hover:border-gold"
-        >
-          Enter the Garden
-        </button>
+        <div className="mt-12">
+          <button
+            ref={btnRef}
+            onClick={handleEnter}
+            className="opacity-0 btn-premium-gold font-mono text-[10px] tracking-[0.3em] uppercase px-10 py-4"
+          >
+            Enter the Garden
+          </button>
+        </div>
       </div >
 
-      <div className="absolute top-6 left-6 font-mono text-[9px] tracking-[0.15em] text-gold-dim">
+      {/* Corners Metadata */}
+      <div className="absolute top-8 left-8 font-mono text-[10px] tracking-[0.2em] text-gold-dim">
         MR-001
       </div >
-      <div className="absolute top-6 right-6 font-mono text-[9px] tracking-[0.15em] animate-shimmer text-gold">
+      <div className="absolute top-8 right-8 font-mono text-[10px] tracking-[0.2em] animate-pulse text-gold">
         ◦ OM
       </div >
-      <div className="absolute bottom-6 left-6 font-mono text-[9px] tracking-[0.15em] text-light-muted">
+      <div className="absolute bottom-8 left-8 font-mono text-[10px] tracking-[0.2em] text-light-muted">
         108Hz
       </div >
-      <div className="absolute bottom-6 right-6 font-mono text-[9px] tracking-[0.15em] text-gold-dim">
+      <div className="absolute bottom-8 right-8 font-mono text-[10px] tracking-[0.2em] text-gold-dim">
         Seattle · 2024
       </div >
     </div >

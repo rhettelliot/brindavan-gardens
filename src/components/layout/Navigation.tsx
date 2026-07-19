@@ -11,30 +11,34 @@ export function Navigation() {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 backdrop-blur-xl bg-void/85 border-b border-edge-faint">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 h-14 flex items-center justify-between">
-        <a href="#" className="font-display text-lg font-semibold italic tracking-[-0.02em] text-gold">
-          BG
-          <span className="font-mono text-[8px] tracking-[0.15em] ml-2 not-italic text-light-muted">
+    <nav className="fixed top-0 left-0 right-0 z-40 backdrop-blur-2xl bg-void/70 border-b border-edge-faint shadow-[0_4px_30px_rgba(0,0,0,0.4)]">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+        <a 
+          href="#" 
+          className="font-display text-xl font-semibold italic tracking-[-0.02em] text-gold-pale hover:text-gold transition-colors duration-300 text-glow-gold flex items-center gap-2 group"
+        >
+          <span>BG</span>
+          <span className="font-mono text-[9px] tracking-[0.2em] not-italic text-light-muted group-hover:text-gold-dim transition-colors duration-300 border-l border-edge-subtle pl-2">
             MR-001
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold"
+              className="relative font-mono text-[10px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 py-1 group"
             >
               {link.label}
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-center transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
           <a
             href="https://distrokid.com/hyperfollow/brindavangardens/upek/"
             target="_blank"
             rel="noreferrer noopener"
-            className="font-mono text-[10px] tracking-[0.2em] uppercase px-4 py-2 border btn-warm text-gold border-gold hover:bg-gold hover:text-void"
+            className="btn-premium-gold font-mono text-[10px] tracking-[0.25em] uppercase px-5 py-2.5 rounded-none"
           >
             Listen
           </a>
@@ -44,20 +48,20 @@ export function Navigation() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
-          className="md:hidden font-mono text-[10px] tracking-[0.2em] uppercase text-gold-dim"
+          className="md:hidden font-mono text-[11px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300"
         >
           {mobileOpen ? 'Close' : 'Menu'}
         </button>
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden px-6 py-6 space-y-4 bg-void/95 border-b border-edge-faint">
+        <div className="md:hidden px-6 py-8 space-y-6 bg-void/98 border-b border-edge-subtle backdrop-blur-3xl animate-fade-in">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="block font-mono text-[11px] tracking-[0.15em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold"
+              className="block font-mono text-[12px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300"
             >
               {link.label}
             </a>
@@ -66,7 +70,7 @@ export function Navigation() {
             href="https://distrokid.com/hyperfollow/brindavangardens/upek/"
             target="_blank"
             rel="noreferrer noopener"
-            className="block font-mono text-[11px] tracking-[0.15em] uppercase text-gold"
+            className="block font-mono text-[12px] tracking-[0.2em] uppercase text-gold border-t border-edge-faint pt-4"
           >
             Listen →
           </a>

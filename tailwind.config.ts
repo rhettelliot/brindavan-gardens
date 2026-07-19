@@ -18,29 +18,29 @@ const config: Config = {
         },
         // Solar Gold — vibrant, energetic, luminous
         gold: {
-          DEFAULT: '#FF6B35',
-          dim: '#D45B25',
-          glow: '#FF6B3526',
-          pale: '#FFB088',
+          DEFAULT: '#D4A843',
+          dim: '#A8862F',
+          glow: 'rgba(212, 168, 67, 0.15)',
+          pale: '#E6C87D',
         },
-        // Electric Blue — sharp, digital, synthetic
+        // Twilight Sapphire — deep, mystical, ethereal
         blue: {
-          DEFAULT: '#007AFF',
-          dim: '#005BB5',
-          glow: '#007AFF26',
-          pale: '#80B5FF',
+          DEFAULT: '#3E7B99',
+          dim: '#2B576C',
+          glow: 'rgba(62, 123, 153, 0.15)',
+          pale: '#7FAEC5',
         },
         // Light — for body text on dark
         light: {
-          DEFAULT: '#E8DDD0',
-          dim: '#A8998A',
-          muted: '#6B5F54',
+          DEFAULT: '#EDE6DA',
+          dim: '#ADA495',
+          muted: '#8B7D70',
         },
         edge: {
-          faint: 'rgba(255,107,53,0.06)',
-          subtle: 'rgba(255,107,53,0.12)',
-          medium: 'rgba(255,107,53,0.2)',
-          bright: 'rgba(255,107,53,0.4)',
+          faint: 'rgba(212,168,67,0.06)',
+          subtle: 'rgba(212,168,67,0.12)',
+          medium: 'rgba(212,168,67,0.2)',
+          bright: 'rgba(212,168,67,0.4)',
         },
       },
       fontFamily: {

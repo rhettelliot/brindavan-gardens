@@ -14,7 +14,7 @@
 
   --light: #EDE6DA;
   --light-dim: #ADA495;
-  --light-muted: #7B7466;
+  --light-muted: #8B7D70;
 
   --edge-faint: rgba(212, 168, 67, 0.08);
   --edge-subtle: rgba(212, 168, 67, 0.15);
@@ -59,12 +59,96 @@ body {
   background: var(--gold-dim);
 }
 
+/* Noise Overlay — analog texture, shoegaze warmth */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 99;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism card — premium depth */
+.glass-card {
+  background: rgba(12, 12, 12, 0.7);
+  backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(212, 168, 67, 0.08);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.02);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+.glass-card:hover {
+  border-color: rgba(212, 168, 67, 0.25);
+  box-shadow: 
+    0 12px 40px 0 rgba(0, 0, 0, 0.5),
+    0 0 30px 0 rgba(212, 168, 67, 0.06),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
 /* Section label — catalog index */
 .section-label {
-  @apply font-mono text-[10px] tracking-[0.3em] uppercase text-light-muted;
+  @apply font-mono text-[11px] tracking-[0.4em] uppercase text-light-muted flex items-center gap-4;
+}
+.section-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 168, 67, 0.15), transparent);
 }
 .section-label .idx {
-  @apply text-gold-dim;
+  @apply text-gold font-semibold tracking-normal mr-1;
+}
+
+/* Sacred Gold Thread — glowing center thread */
+.gold-thread {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  box-shadow: 0 0 10px rgba(212, 168, 67, 0.6);
+}
+
+/* Text glow */
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(212, 168, 67, 0.3), 0 0 40px rgba(212, 168, 67, 0.1);
+}
+
+/* Premium Button — custom border hover and fill effect */
+.btn-premium-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(212, 168, 67, 0.3);
+  background: transparent;
+  color: var(--gold);
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-premium-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  z-index: -1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-premium-gold:hover {
+  color: var(--void);
+  border-color: var(--gold);
+  box-shadow: 0 0 25px rgba(212, 168, 67, 0.25);
+}
+.btn-premium-gold:hover::before {
+  transform: scaleY(1);
+  transform-origin: top;
 }
 
 /* Hairlines — light as structure, never gradient */
@@ -75,11 +159,6 @@ body {
 .hairline-signal {
   height: 1px;
   background: var(--gold);
-}
-
-/* Button — deliberate, no bounce, no glow */
-.btn-signal {
-  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
 /* Reduced motion */
@@ -102,4 +181,26 @@ body {
 /* Anchored sections land below the fixed nav */
 section[id] {
   scroll-margin-top: 88px;
+}
+
+/* Skip link — keyboard-only bypass for fixed navigation */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 1001;
+  padding: 0.75rem 1rem;
+  background: var(--void);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
 }

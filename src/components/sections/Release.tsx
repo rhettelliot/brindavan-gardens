@@ -19,81 +19,87 @@ export function Release() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="release" className="py-32 md:py-48">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="section-label mb-20">Release /</div >
+    <section ref={sectionRef} id="release" className="relative py-32 md:py-48 overflow-hidden bg-void">
+      {/* Background Watermark for dramatic section depth */}
+      <div className="absolute right-[-5%] top-1/4 text-[16vw] font-bold text-gold/[0.02] tracking-widest font-display select-none uppercase pointer-events-none select-none">
+        UPEKṢĀ
+      </div>
 
-        <div className="flex flex-col md:flex-row gap-10 md:gap-20 items-start">
-          <div className="release-cover w-full md:w-1/2">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        <div className="section-label mb-24">
+          <span className="idx">01 //</span> Release
+        </div >
+
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-28 items-center">
+          {/* Album Cover Card with premium hover states */}
+          <div className="release-cover w-full md:w-3/4 lg:w-1/2 group">
             <div
-              className="relative aspect-square overflow-hidden rounded-sm border-edge-subtle"
-              style={{
-                boxShadow: '0 0 80px rgba(255,107,53,0.08), 0 0 160px rgba(0,122,255,0.04)',
-              }}
+              className="relative aspect-square overflow-hidden border border-gold/15 bg-void-raised shadow-[0_0_80px_rgba(212,168,67,0.06),0_0_150px_rgba(62,123,153,0.04)] transition-all duration-700 ease-out group-hover:scale-[1.03] group-hover:border-gold/30 group-hover:shadow-[0_0_120px_rgba(212,168,67,0.12),0_0_180px_rgba(62,123,153,0.08)]"
             >
               <Image
                 src="/covers/BrindavanGardens.webp"
                 alt="Upekṣā cover art"
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-1000 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
               />
+              {/* Inner ambient overlay */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: 'radial-gradient(ellipse at 30% 30%, rgba(255,107,53,0.08) 0%, transparent 60%)',
+                  background: 'radial-gradient(circle at 30% 30%, rgba(212,168,67,0.12) 0%, transparent 60%)',
                 }}
               />
             </div >
           </div >
 
-          <div className="release-info flex-1 py-4 md:py-12">
-            <div className="font-mono text-[10px] tracking-[0.2em] uppercase mb-4 text-gold">
-              MR-001 · 2024
+          {/* Release Description & Links */}
+          <div className="release-info flex-1 py-4 lg:py-8">
+            <div className="font-mono text-[11px] tracking-[0.3em] uppercase mb-5 text-gold">
+              MR-001 · MANTEIS RECORDINGS
             </div >
             <h2
-              className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold italic tracking-[-0.02em] leading-[0.88] mb-2 text-gold-pale"
+              className="font-display text-6xl md:text-8xl lg:text-[6.5rem] font-semibold italic tracking-[-0.03em] leading-[0.82] mb-4 text-gold-pale text-glow-gold"
             >
               Upekṣā
             </h2>
-            <p className="font-display text-xl md:text-2xl mb-6 text-blue">
+            <p className="font-display text-2xl md:text-3xl mb-8 text-blue font-light italic">
               Brindavan Gardens
             </p>
 
-            <div className="gold-thread w-16 mb-8" />
+            <div className="gold-thread w-24 mb-10" />
 
-            <p className="font-body text-base md:text-lg leading-relaxed mb-10 max-w-lg text-light-dim">
+            <p className="font-body text-base md:text-xl leading-relaxed mb-12 max-w-xl text-light-dim">
               Equanimity through sound. Shoegaze walls that dissolve into devotional drones. 
               Guitar as prayer, reverb as cathedral. Where dream meets devotion.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex flex-wrap items-center gap-8 mb-12">
               <a
                 href="https://distrokid.com/hyperfollow/brindavangardens/upek/"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="font-mono text-[10px] tracking-[0.2em] uppercase px-6 py-3 border btn-warm text-gold border-gold hover:text-void"
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#FF6B35' }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent' }}
+                className="btn-premium-gold font-mono text-[10px] tracking-[0.3em] uppercase px-8 py-4"
               >
-                Listen
+                Listen Album
               </a>
               <a
                 href="https://open.spotify.com/album/1oPtOn5okI3nLDvWWGgd3F"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="font-mono text-[10px] tracking-[0.1em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold"
+                className="relative font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold py-1 group"
               >
-                Spotify →
+                Spotify Release →
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             </div >
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {['Spiritual', 'Shoegaze', 'Dream', 'Meditation'].map((tag) => (
                 <span
                   key={tag}
-                  className="font-mono text-[9px] tracking-[0.15em] uppercase px-3 py-1 border border-edge-subtle text-gold-dim"
+                  className="font-mono text-[9px] tracking-[0.2em] uppercase px-4 py-2 border border-gold/10 bg-gold/[0.02] text-gold-pale transition-colors duration-300 hover:border-gold/30 hover:bg-gold/[0.05]"
                 >
                   {tag}
                 </span>
@@ -103,7 +109,7 @@ export function Release() {
         </div >
       </div >
 
-      <div className="divider-gold max-w-5xl mx-auto mt-32" />
+      <div className="gold-thread max-w-5xl mx-auto mt-36 opacity-30" />
     </section>
   )
 }
