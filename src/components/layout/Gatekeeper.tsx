@@ -87,7 +87,7 @@ export function Gatekeeper() {
         ref={lineRef}
         className="absolute top-1/2 left-0 right-0 h-px origin-left"
         style={{
-          background: 'linear-gradient(90deg, transparent, #FF6B35, rgba(0,122,255,0.5), #FF queB35, transparent)',
+          background: 'linear-gradient(90deg, transparent, #FF6B35, rgba(0,122,255,0.5), #FF6B35, transparent)',
         }}
       />
 
