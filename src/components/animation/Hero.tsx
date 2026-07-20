@@ -52,9 +52,9 @@ export function Hero() {
         <h1 className="font-display text-8xl md:text-[11rem] lg:text-[14rem] font-semibold italic tracking-[-0.03em] leading-[0.78] text-gold-pale text-glow-gold select-none">
           Brindavan
         </h1>
-        <h1 className="font-display text-8xl md:text-[11rem] lg:text-[14rem] font-normal tracking-[-0.03em] leading-[0.78] text-light select-none mt-2">
+        <h2 className="font-display text-8xl md:text-[11rem] lg:text-[14rem] font-normal tracking-[-0.03em] leading-[0.78] text-light select-none mt-2">
           Gardens
-        </h1>
+        </h2>
       </div>
 
       <div ref={subRef} className="relative z-10 mt-10 text-center opacity-0">

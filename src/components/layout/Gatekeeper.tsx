@@ -150,8 +150,9 @@ export function Gatekeeper() {
         <div className="mt-12">
           <button
             ref={btnRef}
+            autoFocus
             onClick={handleEnter}
-            className="opacity-0 btn-premium-gold font-mono text-[10px] tracking-[0.3em] uppercase px-10 py-4"
+            className="btn-premium-gold font-mono text-[10px] tracking-[0.3em] uppercase px-10 py-4"
           >
             Enter the Garden
           </button>
