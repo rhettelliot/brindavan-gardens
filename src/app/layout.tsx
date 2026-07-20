@@ -72,7 +72,7 @@ const jsonLd = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#020203',
+  themeColor: '#000000',
   colorScheme: 'dark',
 }
 
@@ -90,7 +90,7 @@ export default function RootLayout({
         />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <noscript>
-          <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#020203', color: '#D4A843', fontFamily: 'monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', padding: 24 }}>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000000', color: '#D4A843', fontFamily: 'monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', padding: 24 }}>
             Brindavan Gardens is an interactive experience — enable JavaScript to enter.
           </div>
         </noscript>
@@ -104,6 +104,16 @@ export default function RootLayout({
           style={{ background: 'linear-gradient(to top, rgba(5,4,2,0.8) 0%, transparent 100%)' }}
         />
         {children}
+        {/* JS safety net: force-reveal any elements stuck at opacity:0 after 4s
+            (guards against Motion/IntersectionObserver failing to fire under Lenis) */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            setTimeout(function() {
+              var els = document.querySelectorAll('main [style*="opacity: 0"], main [style*="opacity:0"]');
+              els.forEach(function(el) { el.style.opacity = '1'; el.style.transform = 'none'; });
+            }, 4000);
+          })();
+        `}} />
       </body>
     </html>
   )

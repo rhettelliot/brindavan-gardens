@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <main
       className="min-h-screen flex flex-col items-center justify-center text-center px-6"
-      style={{ backgroundColor: '#020203' }}
+      style={{ backgroundColor: 'var(--void)' }}
     >
       <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold">
         404 — Outside the garden
