@@ -60,6 +60,7 @@ export function Footer() {
                 href="https://open.spotify.com/album/1oPtOn5okI3nLDvWWGgd3F"
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label="Listen to Brindavan Gardens on Spotify (opens in new tab)"
                 className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Spotify
@@ -69,11 +70,42 @@ export function Footer() {
                 href="https://music.apple.com"
                 target="_blank"
                 rel="noreferrer noopener"
+                aria-label="Listen to Brindavan Gardens on Apple Music (opens in new tab)"
                 className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Apple Music
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Manteis Network — cross-site discovery */}
+        <div className="mt-16 pt-8 border-t border-edge-faint grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-start">
+          <div className="md:col-span-6 flex flex-col gap-2">
+            <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-light-muted border-b border-edge-faint pb-2 max-w-[100px]">
+              Label
+            </span>
+            <a
+              href="https://manteisrecordings.com"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Visit Manteis Recordings label hub (opens in new tab)"
+              className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+            >
+              Manteis Recordings ↗
+              <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+            </a>
+          </div>
+          <div className="md:col-span-6 flex flex-col gap-2">
+            <span className="font-mono text-[9px] tracking-[0.3em] uppercase text-light-muted border-b border-edge-faint pb-2 max-w-[100px]">
+              Roster
+            </span>
+            <div className="flex flex-col gap-1.5">
+              <a href="https://redshiftmantra.com" target="_blank" rel="noreferrer noopener" aria-label="Visit Red Shift Mantra artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Red Shift Mantra ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
+              <a href="https://manteis-project-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit The Manteis Project artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">The Manteis Project ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
+              <a href="https://thesan-musique-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Thesan Musique artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Thesan Musique ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
+              <a href="https://bethany-pritchett-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Bethany Pritchett artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Bethany Pritchett ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
             </div>
           </div>
         </div>
