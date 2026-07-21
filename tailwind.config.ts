@@ -9,38 +9,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brindavan Gardens — sacred, shoegaze, golden haze
         void: {
-          DEFAULT: '#020203',
-          raised: '#0A0A0B',
-          elevated: '#121214',
-          warm: '#1A1A1C',
+          DEFAULT: '#000000',
+          raised: '#0C0C0C',
+          elevated: '#141414',
+          warm: '#1C1C1C',
         },
-        // Solar Gold — vibrant, energetic, luminous
         gold: {
           DEFAULT: '#D4A843',
           dim: '#A8862F',
           glow: 'rgba(212, 168, 67, 0.15)',
           pale: '#E6C87D',
         },
-        // Twilight Sapphire — deep, mystical, ethereal
         blue: {
-          DEFAULT: '#3E7B99',
-          dim: '#2B576C',
-          glow: 'rgba(62, 123, 153, 0.15)',
-          pale: '#7FAEC5',
+          DEFAULT: '#7FAEC5',
+          dim: '#3E7B99',
+          glow: 'rgba(127, 174, 197, 0.15)',
+          pale: '#B6D6E6',
         },
-        // Light — for body text on dark
         light: {
           DEFAULT: '#EDE6DA',
           dim: '#ADA495',
           muted: '#8B7D70',
         },
         edge: {
-          faint: 'rgba(212,168,67,0.06)',
-          subtle: 'rgba(212,168,67,0.12)',
-          medium: 'rgba(212,168,67,0.2)',
-          bright: 'rgba(212,168,67,0.4)',
+          faint: 'rgba(212,168,67,0.08)',
+          subtle: 'rgba(212,168,67,0.15)',
+          medium: 'rgba(212,168,67,0.25)',
+          bright: 'rgba(212,168,67,0.45)',
         },
       },
       fontFamily: {

@@ -12,12 +12,11 @@ import { CTASection } from '@/components/ui/CTASection'
 import { Footer } from '@/components/layout/Footer'
 
 export default function Home() {
-  const [entered, setEntered] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return sessionStorage.getItem('bg-entered') === 'true'
-    }
-    return false
-  })
+  const [entered, setEntered] = useState(false)
+
+  useEffect(() => {
+    setEntered(() => sessionStorage.getItem('bg-entered') === 'true')
+  }, [])
 
   useEffect(() => {
     const handleEnter = () => {
