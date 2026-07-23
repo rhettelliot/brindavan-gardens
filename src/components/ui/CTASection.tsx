@@ -18,17 +18,9 @@ export function CTASection() {
 
   return (
     <section ref={sectionRef} className="relative py-32 md:py-48 overflow-hidden bg-void">
-      {/* Background Aura specifically for the CTA Card */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full opacity-20 blur-[100px] pointer-events-none z-0"
-        style={{
-          background: 'radial-gradient(ellipse, rgba(212,168,67,0.15) 0%, rgba(62,123,153,0.05) 50%, transparent 80%)',
-        }}
-      />
-
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center">
-        {/* Large Glassmorphic Invitation Card */}
-        <div className="cta-content glass-card py-20 px-8 md:px-16 relative overflow-hidden rounded-sm border border-gold/15">
+        {/* Invitation Card — flat void panel, no decorative gradients */}
+        <div className="cta-content void-panel py-20 px-8 md:px-16 relative overflow-hidden border border-gold/15">
           {/* Corner structural bracket designs for premium look */}
           <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-gold/20 pointer-events-none" />
           <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-gold/20 pointer-events-none" />

@@ -34,16 +34,8 @@ export function Resonance() {
           {resonances.map((r) => (
             <div
               key={r.label}
-              className="res-cell glass-card p-10 md:p-12 flex flex-col items-center justify-center text-center relative group overflow-hidden cursor-default rounded-sm"
+              className="res-cell void-panel p-10 md:p-12 flex flex-col items-center justify-center text-center relative group overflow-hidden cursor-default"
             >
-              {/* Subtle inner hover glow */}
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                style={{
-                  background: 'radial-gradient(circle at center, rgba(212,168,67,0.04) 0%, transparent 70%)',
-                }}
-              />
-
               <div className={`font-mono text-6xl md:text-7xl font-bold tracking-[-0.05em] transition-transform duration-500 group-hover:scale-105 ${r.color}`}>
                 {r.label}
               </div >
