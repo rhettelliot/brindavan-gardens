@@ -1,10 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function Hero() {
   const heroRef = useRef(null)
@@ -13,14 +9,28 @@ export function Hero() {
   const indicatorRef = useRef(null)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.3 })
-      tl.fromTo(titleRef.current, { opacity: 0, filter: 'blur(10px)', y: 50 }, { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.6, ease: 'power2.out' })
-      tl.fromTo(subRef.current, { opacity: 0 }, { opacity: 1, duration: 1, ease: 'power2.out' }, '-=0.8')
-      gsap.to(indicatorRef.current, { y: 6, duration: 2, ease: 'sine.inOut', repeat: -1, yoyo: true })
-      gsap.to(titleRef.current, { y: -60, ease: 'none', scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1.5 } })
-    }, heroRef)
-    return () => ctx.revert()
+    let ctx: { revert: () => void } | null = null
+    let active = true
+
+    ;(async () => {
+      const gsap = (await import('gsap')).default
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+      if (!active) return
+      gsap.registerPlugin(ScrollTrigger)
+
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({ delay: 0.3 })
+        tl.fromTo(titleRef.current, { opacity: 0, filter: 'blur(10px)', y: 50 }, { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.6, ease: 'power2.out' })
+        tl.fromTo(subRef.current, { opacity: 0 }, { opacity: 1, duration: 1, ease: 'power2.out' }, '-=0.8')
+        gsap.to(indicatorRef.current, { y: 6, duration: 2, ease: 'sine.inOut', repeat: -1, yoyo: true })
+        gsap.to(titleRef.current, { y: -60, ease: 'none', scrollTrigger: { trigger: heroRef.current, start: 'top top', end: 'bottom top', scrub: 1.5 } })
+      }, heroRef)
+    })()
+
+    return () => {
+      active = false
+      ctx?.revert()
+    }
   }, [])
 
   return (
@@ -69,3 +79,4 @@ export function Hero() {
     </section>
   )
 }
+

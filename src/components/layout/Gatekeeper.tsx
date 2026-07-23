@@ -1,10 +1,11 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
 
 export function Gatekeeper() {
   const [entered, setEntered] = useState(false)
+  const gsapRef = useRef<typeof import('gsap').default | null>(null)
+  const activeRef = useRef(true)
 
   useEffect(() => {
     setEntered(sessionStorage.getItem('bg-entered') === 'true')
@@ -19,41 +20,56 @@ export function Gatekeeper() {
   useEffect(() => {
     if (entered) return
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.2 })
+    let ctx: { revert: () => void } | null = null
+    let active = true
+    activeRef.current = true
 
-      tl.fromTo(
-        lineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 2, ease: 'power2.inOut' }
-      )
+    ;(async () => {
+      const gsap = (await import('gsap')).default
+      if (!active) return
+      gsapRef.current = gsap
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({ delay: 0.2 })
 
-      tl.fromTo(
-        titleRef.current,
-        { opacity: 0, filter: 'blur(12px)', y: 20 },
-        { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.4, ease: 'power2.out' },
-        '-=1.2'
-      )
+        tl.fromTo(
+          lineRef.current,
+          { scaleX: 0 },
+          { scaleX: 1, duration: 2, ease: 'power2.inOut' }
+        )
 
-      tl.fromTo(
-        subRef.current,
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-        '-=0.6'
-      )
+        tl.fromTo(
+          titleRef.current,
+          { opacity: 0, filter: 'blur(12px)', y: 20 },
+          { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.4, ease: 'power2.out' },
+          '-=1.2'
+        )
 
-      tl.fromTo(
-        btnRef.current,
-        { opacity: 0, y: 15 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-        '-=0.3'
-      )
-    }, containerRef)
+        tl.fromTo(
+          subRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+          '-=0.6'
+        )
 
-    return () => ctx.revert()
+        tl.fromTo(
+          btnRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+          '-=0.3'
+        )
+      }, containerRef)
+    })()
+
+    return () => {
+      active = false
+      activeRef.current = false
+      ctx?.revert()
+    }
   }, [entered])
 
   const handleEnter = () => {
+    const gsap = gsapRef.current
+    if (!gsap) return
     gsap.to(containerRef.current, {
       opacity: 0,
       filter: 'blur(8px)',
@@ -61,6 +77,7 @@ export function Gatekeeper() {
       duration: 0.8,
       ease: 'power2.in',
       onComplete: () => {
+        if (!activeRef.current) return
         sessionStorage.setItem('bg-entered', 'true')
         window.dispatchEvent(new Event('bg-enter'))
         setEntered(true)
@@ -172,3 +189,4 @@ export function Gatekeeper() {
     </div>
   )
 }
+
