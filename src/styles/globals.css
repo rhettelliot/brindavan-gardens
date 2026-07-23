@@ -77,14 +77,14 @@ body {
   background: rgba(12, 12, 12, 0.7);
   backdrop-filter: blur(20px) saturate(120%);
   border: 1px solid rgba(212, 168, 67, 0.08);
-  box-shadow: 
+  box-shadow:
     0 8px 32px 0 rgba(0, 0, 0, 0.37),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.02);
   transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
 }
 .glass-card:hover {
   border-color: rgba(212, 168, 67, 0.25);
-  box-shadow: 
+  box-shadow:
     0 12px 40px 0 rgba(0, 0, 0, 0.5),
     0 0 30px 0 rgba(212, 168, 67, 0.06),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.04);
@@ -98,7 +98,7 @@ body {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(212, 168, 67, 0.15), transparent);
+  background: var(--edge-subtle);
 }
 .section-label .idx {
   @apply text-gold font-semibold tracking-normal mr-1;
@@ -107,7 +107,7 @@ body {
 /* Sacred Gold Thread — glowing center thread */
 .gold-thread {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  background: var(--gold);
   box-shadow: 0 0 10px rgba(212, 168, 67, 0.6);
 }
 
@@ -126,6 +126,8 @@ body {
   border: 1px solid rgba(212, 168, 67, 0.3);
   background: transparent;
   color: var(--gold);
+  min-width: 44px;
+  min-height: 44px;
   transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-premium-gold::before {
@@ -174,8 +176,14 @@ body {
 
 /* Keyboard navigation — signal outline, only for keyboard focus */
 :focus-visible {
-  outline: 1px solid #d4a843;
+  outline: 2px solid #d4a843;
   outline-offset: 3px;
+  border-radius: 0;
+}
+
+/* Remove default focus ring where custom focus-visible is present */
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
 /* Anchored sections land below the fixed nav */
@@ -187,6 +195,7 @@ section[id] {
 .skip-link {
   position: absolute;
   left: -9999px;
+  top: 0;
   z-index: 1001;
   padding: 0.75rem 1rem;
   background: var(--void);
@@ -196,8 +205,13 @@ section[id] {
   font-size: 11px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-.skip-link:focus {
+.skip-link:focus-visible {
   position: fixed;
   left: 1rem;
   top: 1rem;

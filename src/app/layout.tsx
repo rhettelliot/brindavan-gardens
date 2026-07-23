@@ -94,7 +94,7 @@ export default function RootLayout({
             Brindavan Gardens is an interactive experience — enable JavaScript to enter.
           </div>
         </noscript>
-        <div className="noise-overlay" />
+        <div className="noise-overlay" aria-hidden="true" />
         <div
           className="warm-vignette fixed top-0 left-0 right-0 h-48"
           style={{ background: 'linear-gradient(to bottom, rgba(5,4,2,0.8) 0%, transparent 100%)' }}
