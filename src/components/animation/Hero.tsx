@@ -57,7 +57,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-void">
+    <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-void">
       {/* 1. Topographic contour lines like temple grounds, warm gold */}
       <div ref={topoRef} className="topographic-overlay" aria-hidden="true" />
 

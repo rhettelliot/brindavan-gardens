@@ -65,7 +65,7 @@ export function Philosophy() {
     <section
       ref={sectionRef}
       id="philosophy"
-      className="relative min-h-screen py-32 md:py-48 overflow-hidden bg-void"
+      className="relative min-h-[100dvh] py-32 md:py-48 overflow-hidden bg-void"
     >
       {/* 5. Mandala orbital curves */}
       <svg className="absolute right-[-5%] top-0 w-[45%] h-full pointer-events-none z-0 opacity-25" viewBox="0 0 200 400" preserveAspectRatio="none" aria-hidden="true"

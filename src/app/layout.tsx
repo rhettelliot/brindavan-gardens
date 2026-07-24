@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import '@/styles/globals.css'
-import { Inter, JetBrains_Mono, Cormorant_Garamond } from 'next/font/google'
+import { Space_Grotesk, JetBrains_Mono, Cormorant_Garamond } from 'next/font/google'
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
@@ -236,7 +236,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrains.variable} ${cormorant.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrains.variable} ${cormorant.variable}`}>
       <body className="bg-void text-light antialiased">
         {/* JSON-LD structured data — triple schema for max rich result eligibility */}
         <script
