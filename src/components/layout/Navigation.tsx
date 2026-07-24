@@ -7,7 +7,9 @@ export function Navigation() {
 
   const links = [
     { href: '#release', label: 'Release' },
+    { href: '#philosophy', label: 'Protocol' },
     { href: '#mantra', label: 'Mantra' },
+    { href: '#resonance', label: 'Resonance' },
   ]
 
   return (
@@ -20,7 +22,7 @@ export function Navigation() {
         >
           <span>BG</span>
           <span className="font-mono text-[9px] tracking-[0.2em] not-italic text-light-muted group-hover:text-gold-dim transition-colors duration-300 border-l border-edge-subtle pl-2">
-            MR-001
+            BG-007
           </span>
         </a>
 

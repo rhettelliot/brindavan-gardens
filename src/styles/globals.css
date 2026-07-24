@@ -155,6 +155,33 @@ body {
   background: var(--gold);
 }
 
+/* Warm glow overlay — subtle radial gold gradient across sections */
+.warm-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 30%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 75% 70%, rgba(212, 168, 67, 0.05) 0%, transparent 45%);
+}
+
+/* Perspective wrapper for parallax tilt cards */
+.perspective {
+  perspective: 1200px;
+}
+
+/* Parallax tilt inner */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Masonry cell base */
+.masonry-cell {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

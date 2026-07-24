@@ -175,7 +175,7 @@ export function Gatekeeper() {
       </div>
 
       <div className="absolute top-8 left-8 font-mono text-[10px] tracking-[0.2em] text-gold-dim">
-        MR-001
+        BG-007
       </div>
       <div className="absolute top-8 right-8 font-mono text-[10px] tracking-[0.2em] animate-pulse text-gold">
         ◦ OM
@@ -189,4 +189,3 @@ export function Gatekeeper() {
     </div>
   )
 }
-

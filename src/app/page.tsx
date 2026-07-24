@@ -5,9 +5,10 @@ import { Gatekeeper } from '@/components/layout/Gatekeeper'
 import { Navigation } from '@/components/layout/Navigation'
 import { SmoothScroll } from '@/components/layout/SmoothScroll'
 import { Hero } from '@/components/animation/Hero'
-import { Resonance } from '@/components/sections/Resonance'
 import { Release } from '@/components/sections/Release'
+import { Philosophy } from '@/components/sections/Philosophy'
 import { Mantra } from '@/components/sections/Mantra'
+import { Resonance } from '@/components/sections/Resonance'
 import { CTASection } from '@/components/ui/CTASection'
 import { Footer } from '@/components/layout/Footer'
 
@@ -38,9 +39,10 @@ export default function Home() {
           </header>
           <main id="main-content" tabIndex={-1}>
             <Hero />
-            <Resonance />
             <Release />
+            <Philosophy />
             <Mantra />
+            <Resonance />
             <CTASection />
           </main>
           <Footer />

@@ -28,26 +28,34 @@ export function Mantra() {
 
   return (
     <section ref={sectionRef} id="mantra" className="relative py-40 md:py-60 overflow-hidden bg-void">
-      {/* Visual vignettes to frame the text emergence */}
+      {/* Warm glow overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-10"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 60%, rgba(212,168,67,0.08) 0%, transparent 50%)',
+        }}
+      />
+
+      {/* Visual vignettes */}
       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-void to-transparent pointer-events-none z-10" />
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-void to-transparent pointer-events-none z-10" />
 
       {/* Atmospheric drift glows */}
       <div 
-        className="absolute top-1/2 left-[5%] -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-10 blur-[100px] pointer-events-none"
+        className="absolute top-1/2 left-[5%] -translate-y-1/2 w-[500px] h-[500px] rounded-full opacity-10 blur-[100px] pointer-events-none z-0"
         style={{ background: 'radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%)' }}
       />
       <div 
-        className="absolute top-1/3 right-[5%] w-[400px] h-[400px] rounded-full opacity-10 blur-[80px] pointer-events-none"
+        className="absolute top-1/3 right-[5%] w-[400px] h-[400px] rounded-full opacity-10 blur-[80px] pointer-events-none z-0"
         style={{ background: 'radial-gradient(circle, rgba(62,123,153,0.15) 0%, transparent 70%)' }}
       />
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-20">
         <div className="section-label mb-24">
           <span className="idx">03 //</span> Mantra
-        </div >
+        </div>
 
-        {/* Group hover wrapper — non-hovered lines dim while active line glows */}
         <div className="space-y-10 md:space-y-14 group/mantra-wall">
           {mantra.map((line, i) => {
             let lineStyle = "text-light/80 hover:text-light";
@@ -68,10 +76,10 @@ export function Mantra() {
               </p>
             )
           })}
-        </div >
+        </div>
 
         <div className="mt-28 gold-thread max-w-xl opacity-40" />
-      </div >
+      </div>
     </section>
   )
 }

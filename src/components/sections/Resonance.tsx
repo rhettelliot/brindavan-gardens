@@ -24,10 +24,19 @@ export function Resonance() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-36 relative overflow-hidden bg-void">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+    <section ref={sectionRef} id="resonance" className="py-24 md:py-36 relative overflow-hidden bg-void">
+      {/* Warm glow overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-10"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 50%, rgba(212,168,67,0.07) 0%, transparent 55%)',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
         <div className="section-label mb-20">
-          <span className="idx">02 //</span> Resonance
+          <span className="idx">04 //</span> Resonance
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -38,13 +47,13 @@ export function Resonance() {
             >
               <div className={`font-mono text-6xl md:text-7xl font-bold tracking-[-0.05em] transition-transform duration-500 group-hover:scale-105 ${r.color}`}>
                 {r.label}
-              </div >
+              </div>
               <div className={`font-mono text-[10px] tracking-[0.3em] uppercase mt-4 transition-colors duration-500 ${r.color} opacity-80 group-hover:opacity-100`}>
                 {r.unit}
-              </div >
+              </div>
               <div className="font-mono text-[9px] tracking-[0.2em] uppercase mt-2 text-light-muted group-hover:text-light-dim transition-colors duration-500">
                 {r.desc}
-              </div >
+              </div>
             </div>
           ))}
         </div>

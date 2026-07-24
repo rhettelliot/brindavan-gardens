@@ -12,16 +12,26 @@ export function CTASection() {
     const disposers: Array<() => void> = []
     ;(async () => {
       disposers.push(await revealOnEnter(root.querySelectorAll('.cta-content'), { y: 30, duration: 0.9 }))
+      disposers.push(await revealOnEnter(root.querySelectorAll('.cta-extra'), { y: 20, duration: 0.8, stagger: 0.1 }))
     })()
     return () => disposers.forEach((d) => d())
   }, [])
 
   return (
     <section ref={sectionRef} className="relative py-32 md:py-48 overflow-hidden bg-void">
-      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center">
-        {/* Invitation Card — flat void panel, no decorative gradients */}
+      {/* Warm glow overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none z-10"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 40%, rgba(212,168,67,0.08) 0%, transparent 55%)',
+        }}
+      />
+
+      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-20 text-center">
+        {/* Invitation Card */}
         <div className="cta-content void-panel py-20 px-8 md:px-16 relative overflow-hidden border border-gold/15">
-          {/* Corner structural bracket designs for premium look */}
+          {/* Corner structural bracket designs */}
           <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-gold/20 pointer-events-none" />
           <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-gold/20 pointer-events-none" />
           <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-gold/20 pointer-events-none" />
@@ -49,6 +59,20 @@ export function CTASection() {
               Submit Demo
             </a>
           </div>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center cta-extra">
+          {[
+            { label: 'Spiritual', value: 'Shoegaze' },
+            { label: 'Dream', value: 'Devotion' },
+            { label: 'BG-007', value: 'DEVOTIONAL PROTOCOL' },
+          ].map((item) => (
+            <div key={item.label} className="cta-extra void-panel py-6 px-4"
+            >
+              <div className="font-mono text-[9px] tracking-[0.4em] uppercase text-gold-dim mb-2">{item.label}</div>
+              <div className="font-display text-xl md:text-2xl italic text-gold-pale">{item.value}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
