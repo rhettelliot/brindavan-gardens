@@ -64,6 +64,16 @@ export function Footer() {
             </span>
             <div className="flex flex-col gap-2">
               <a
+                href="https://distrokid.com/hyperfollow/brindavangardens/upek/"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Listen to Brindavan Gardens on all streaming platforms (opens in new tab)"
+                className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+              >
+                All Platforms
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+              </a>
+              <a
                 href="https://open.spotify.com/album/1oPtOn5okI3nLDvWWGgd3F"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -81,6 +91,16 @@ export function Footer() {
                 className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Apple Music
+                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
+              </a>
+              <a
+                href="https://manteisrecordings.bandcamp.com"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Purchase Brindavan Gardens on Bandcamp (opens in new tab)"
+                className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+              >
+                Bandcamp
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
             </div>
