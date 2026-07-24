@@ -11,10 +11,14 @@
   --gold: #D4A843;
   --gold-dim: #A8862F;
   --gold-pale: #E6C87D;
+  --gold-warm: #C99A35;
+  --gold-soft: rgba(212, 168, 67, 0.22);
+  --gold-glow: rgba(212, 168, 67, 0.15);
 
   --light: #EDE6DA;
   --light-dim: #ADA495;
   --light-muted: #8B7D70;
+  --cream: #F5ECDD;
 
   --edge-faint: rgba(212, 168, 67, 0.08);
   --edge-subtle: rgba(212, 168, 67, 0.15);
@@ -37,7 +41,7 @@ html {
 
 body {
   background: var(--void);
-  color: var(--light);
+  color: var(--cream);
   overflow-x: hidden;
 }
 
@@ -59,20 +63,20 @@ body {
   background: var(--gold-dim);
 }
 
-/* Noise Overlay — analog texture, shoegaze warmth */
+/* Noise Overlay — analog grain */
 .noise-overlay {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   content: "";
-  opacity: 0.035;
+  opacity: 0.045;
   pointer-events: none;
   z-index: 99;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Void panel — flat, structural, no glassmorphism (Antigravity OS) */
+/* Void panel */
 .void-panel {
   background: var(--void-raised);
   border: 1px solid var(--edge-faint);
@@ -96,7 +100,7 @@ body {
   @apply text-gold font-semibold tracking-normal mr-1;
 }
 
-/* Sacred Gold Thread — glowing center thread */
+/* Sacred Gold Thread */
 .gold-thread {
   height: 1px;
   background: var(--gold);
@@ -108,7 +112,12 @@ body {
   text-shadow: 0 0 20px rgba(212, 168, 67, 0.3), 0 0 40px rgba(212, 168, 67, 0.1);
 }
 
-/* Premium Button — custom border hover and fill effect */
+/* Cream text */
+.text-cream {
+  color: var(--cream);
+}
+
+/* Premium Button */
 .btn-premium-gold {
   position: relative;
   display: inline-flex;
@@ -145,7 +154,7 @@ body {
   transform-origin: top;
 }
 
-/* Hairlines — light as structure, never gradient */
+/* Hairlines */
 .hairline {
   height: 1px;
   background: var(--edge-medium);
@@ -155,7 +164,7 @@ body {
   background: var(--gold);
 }
 
-/* Warm glow overlay — subtle radial gold gradient across sections */
+/* Warm glow overlay */
 .warm-glow {
   pointer-events: none;
   position: absolute;
@@ -163,6 +172,169 @@ body {
   background:
     radial-gradient(circle at 25% 30%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 75% 70%, rgba(212, 168, 67, 0.05) 0%, transparent 45%);
+}
+
+/* 1. Topographic contour lines like temple grounds, warm gold */
+.topographic-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 8%, rgba(212,168,67,0.28) 9%, rgba(212,168,67,0.28) 10%, transparent 11%),
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 18%, rgba(212,168,67,0.22) 19%, rgba(212,168,67,0.22) 20%, transparent 21%),
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 28%, rgba(212,168,67,0.18) 29%, rgba(212,168,67,0.18) 30%, transparent 31%),
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 38%, rgba(212,168,67,0.14) 39%, rgba(212,168,67,0.14) 40%, transparent 41%),
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 48%, rgba(212,168,67,0.10) 49%, rgba(212,168,67,0.10) 50%, transparent 51%),
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 58%, rgba(212,168,67,0.08) 59%, rgba(212,168,67,0.08) 60%, transparent 61%),
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 68%, rgba(212,168,67,0.06) 69%, rgba(212,168,67,0.06) 70%, transparent 71%),
+    radial-gradient(circle at 50% 55%, transparent 0%, transparent 78%, rgba(212,168,67,0.05) 79%, rgba(212,168,67,0.05) 80%, transparent 81%);
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
+  animation: topo-breathe 10s ease-in-out infinite;
+}
+
+@keyframes topo-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.03); }
+}
+
+/* 2. Visible grid lines — subtle, warm-toned */
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(212,168,67,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(212,168,67,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 55%, transparent 90%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 90%);
+}
+
+/* 3. Massive catalog number MR-007 display art */
+.catalog-display {
+  font-family: var(--font-mono), monospace;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.75;
+  color: var(--cream);
+  opacity: 0.08;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* 4. Concentric frame tunnel */
+.frame-tunnel {
+  position: relative;
+}
+.frame-tunnel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  background:
+    conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(212,168,67,0.08) 20deg, transparent 40deg, rgba(212,168,67,0.06) 60deg, transparent 80deg, rgba(212,168,67,0.08) 100deg, transparent 120deg, rgba(212,168,67,0.06) 140deg, transparent 160deg, rgba(212,168,67,0.08) 180deg, transparent 200deg, rgba(212,168,67,0.06) 220deg, transparent 240deg, rgba(212,168,67,0.08) 260deg, transparent 280deg, rgba(212,168,67,0.06) 300deg, transparent 320deg, rgba(212,168,67,0.08) 340deg, transparent 360deg);
+  opacity: 0.35;
+}
+.frame-tunnel .tunnel-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(212,168,67,0.18);
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 15;
+}
+.frame-tunnel .tunnel-ring:nth-child(1) { width: 85%; height: 85%; opacity: 0.9; }
+.frame-tunnel .tunnel-ring:nth-child(2) { width: 70%; height: 70%; opacity: 0.7; }
+.frame-tunnel .tunnel-ring:nth-child(3) { width: 55%; height: 55%; opacity: 0.5; }
+.frame-tunnel .tunnel-ring:nth-child(4) { width: 40%; height: 40%; opacity: 0.35; }
+.frame-tunnel .tunnel-ring:nth-child(5) { width: 25%; height: 25%; opacity: 0.2; }
+
+/* 5. Orbital path curves — mandala-like SVG */
+.orbital-curve {
+  fill: none;
+  stroke: rgba(212,168,67,0.18);
+  stroke-width: 1;
+}
+.orbital-curve-thin {
+  fill: none;
+  stroke: rgba(212,168,67,0.10);
+  stroke-width: 0.5;
+}
+.orbital-glow {
+  fill: none;
+  stroke: rgba(212,168,67,0.35);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 6px rgba(212,168,67,0.4));
+}
+
+/* 6. Parallel line pattern overlay like devotional text columns */
+.parallel-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 7px,
+    rgba(212,168,67,0.08) 7px,
+    rgba(212,168,67,0.08) 8px
+  );
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+/* 7. Technical metadata mono data block */
+.mono-data {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--light-muted);
+}
+
+/* 8. Geometric masking — circles and lotus-like shapes */
+.circle-mask {
+  clip-path: circle(48% at 50% 50%);
+}
+.lotus-mask {
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.lotus-mask-soft {
+  clip-path: polygon(50% 8%, 60% 38%, 94% 38%, 67% 57%, 76% 88%, 50% 70%, 24% 88%, 33% 57%, 6% 38%, 40% 38%);
+}
+.inset-circle-mask {
+  clip-path: circle(42% at 50% 50%);
+}
+
+/* 9. Stamp/badge textures — circular mandala stamps */
+.mandala-stamp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212,168,67,0.25);
+  color: var(--gold-dim);
+  background: radial-gradient(circle, rgba(212,168,67,0.04) 0%, transparent 70%);
+}
+.mandala-stamp::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(212,168,67,0.2);
+  border-radius: 50%;
+}
+.mandala-stamp::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(212,168,67,0.12);
+  border-radius: 50%;
 }
 
 /* Perspective wrapper for parallax tilt cards */
@@ -182,6 +354,40 @@ body {
   page-break-inside: avoid;
 }
 
+/* Sanskrit label pill */
+.sanskrit-pill {
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border: 1px solid var(--edge-subtle);
+  padding: 0.35rem 0.7rem;
+  background: rgba(212,168,67,0.03);
+}
+
+/* Warm paper texture overlay */
+.paper-texture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
+}
+
+/* Devotional art border bracket */
+.bracket-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: rgba(212,168,67,0.28);
+  pointer-events: none;
+}
+.bracket-corner.tl { top: 0; left: 0; border-top: 1px solid; border-left: 1px solid; }
+.bracket-corner.tr { top: 0; right: 0; border-top: 1px solid; border-right: 1px solid; }
+.bracket-corner.bl { bottom: 0; left: 0; border-bottom: 1px solid; border-left: 1px solid; }
+.bracket-corner.br { bottom: 0; right: 0; border-bottom: 1px solid; border-right: 1px solid; }
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -193,14 +399,13 @@ body {
   }
 }
 
-/* Keyboard navigation — signal outline, only for keyboard focus */
+/* Keyboard navigation */
 :focus-visible {
   outline: 2px solid #d4a843;
   outline-offset: 3px;
   border-radius: 0;
 }
 
-/* Remove default focus ring where custom focus-visible is present */
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -210,7 +415,7 @@ section[id] {
   scroll-margin-top: 88px;
 }
 
-/* Skip link — keyboard-only bypass for fixed navigation */
+/* Skip link */
 .skip-link {
   position: absolute;
   left: -9999px;

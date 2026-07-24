@@ -63,7 +63,7 @@ const jsonLd = {
     '@type': 'Organization',
     name: 'Manteis Recordings',
   },
-  catalogNumber: 'MR-001',
+  catalogNumber: 'MR-007',
   datePublished: '2024',
   genre: ['Spiritual', 'Shoegaze', 'Dream', 'Meditation'],
   url: 'https://brindavangardens.com',
