@@ -76,6 +76,51 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
+/* Awwwards overdrive motion tokens */
+.tilt-card,
+.perspective,
+.magnetic-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.curtain-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-strobe {
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+.gold-dust {
+  pointer-events: none;
+  mix-blend-mode: screen;
+  z-index: 2;
+}
+
+.spotlight-border {
+  background-clip: padding-box, border-box;
+}
+
+.chroma-grid {
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* Sanskrit marquee */
+.sanskrit-marquee {
+  will-change: transform;
+}
+
+/* Parallax mandala */
+.parallax-mandala {
+  will-change: transform;
+  pointer-events: none;
+}
+
 /* Void panel */
 .void-panel {
   background: var(--void-raised);
@@ -86,7 +131,7 @@ body {
   border-color: var(--edge-subtle);
 }
 
-/* Section label — catalog index */
+/* Reduced motion */
 .section-label {
   @apply font-mono text-[11px] tracking-[0.4em] uppercase text-light-muted flex items-center gap-4;
 }
@@ -100,20 +145,25 @@ body {
   @apply text-gold font-semibold tracking-normal mr-1;
 }
 
+/* Reduced motion override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-strobe,
+  .gold-dust,
+  .chroma-grid,
+  .parallax-mandala {
+    display: none !important;
+  }
+}
+
 /* Sacred Gold Thread */
 .gold-thread {
-  height: 1px;
-  background: var(--gold);
-  box-shadow: 0 0 10px rgba(212, 168, 67, 0.6);
-}
-
-/* Text glow */
-.text-glow-gold {
-  text-shadow: 0 0 20px rgba(212, 168, 67, 0.3), 0 0 40px rgba(212, 168, 67, 0.1);
-}
-
-/* Cream text */
-.text-cream {
   color: var(--cream);
 }
 

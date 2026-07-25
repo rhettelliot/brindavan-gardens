@@ -11,6 +11,9 @@ import { Mantra } from '@/components/sections/Mantra'
 import { Resonance } from '@/components/sections/Resonance'
 import { CTASection } from '@/components/ui/CTASection'
 import { Footer } from '@/components/layout/Footer'
+import { ScrollStrobe } from '@/components/effects/ScrollStrobe'
+import { GoldDust } from '@/components/effects/GoldDust'
+import { CurtainReveal } from '@/components/effects/CurtainReveal'
 
 export default function Home() {
   const [entered, setEntered] = useState(false)
@@ -34,16 +37,28 @@ export default function Home() {
       <Gatekeeper />
       {entered && (
         <SmoothScroll>
+          <ScrollStrobe />
+          <GoldDust />
           <header>
             <Navigation />
           </header>
           <main id="main-content" tabIndex={-1}>
-            <Hero />
-            <Release />
-            <Philosophy />
-            <Mantra />
+            <CurtainReveal direction="up">
+              <Hero />
+            </CurtainReveal>
+            <CurtainReveal direction="left">
+              <Release />
+            </CurtainReveal>
+            <CurtainReveal direction="right">
+              <Philosophy />
+            </CurtainReveal>
+            <CurtainReveal direction="up">
+              <Mantra />
+            </CurtainReveal>
             <Resonance />
-            <CTASection />
+            <CurtainReveal direction="up">
+              <CTASection />
+            </CurtainReveal>
           </main>
           <Footer />
         </SmoothScroll>

@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react'
 import { revealOnEnter } from '@/lib/reveal'
+import { SpotlightBorder } from '@/components/effects/SpotlightBorder'
+import { CurtainReveal } from '@/components/effects/CurtainReveal'
 
 const resonances = [
   { label: '108', unit: 'Hz', desc: 'Sacred frequency', color: 'text-gold' },
@@ -25,8 +27,8 @@ export function Resonance() {
   }, [])
 
   return (
+    <CurtainReveal direction="up">
     <section ref={sectionRef} id="resonance" className="py-24 md:py-36 relative overflow-hidden bg-void">
-      {/* Warm glow overlay */}
       <div
         className="absolute inset-0 pointer-events-none z-10"
         style={{
@@ -36,8 +38,7 @@ export function Resonance() {
       />
 
       {/* 5. Orbital curves behind cards */}
-      <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[160%] pointer-events-none z-0 opacity-25" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true"
-      >
+      <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[160%] pointer-events-none z-0 opacity-25" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
         <path className="orbital-curve" d="M0,100 C100,0 300,0 400,100 C300,200 100,200 0,100" />
         <path className="orbital-curve-thin" d="M0,100 C120,20 280,20 400,100 C280,180 120,180 0,100" />
         <path className="orbital-curve-thin" d="M0,100 C140,40 260,40 400,100 C260,160 140,160 0,100" />
@@ -51,9 +52,7 @@ export function Resonance() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {resonances.map((r, i) => (
-            <div
-              key={r.label}
-              className="res-cell void-panel p-10 md:p-12 flex flex-col items-center justify-center text-center relative group overflow-hidden cursor-default"
+            <SpotlightBorder key={r.label} className="res-cell void-panel p-10 md:p-12 flex flex-col items-center justify-center text-center relative group overflow-hidden cursor-default"
             >
               {/* 9. Mandala stamp corner */}
               <div className="orbital-accent absolute -top-8 -right-8 w-24 h-24 mandala-stamp opacity-40 group-hover:opacity-80 transition-opacity duration-500"
@@ -76,10 +75,11 @@ export function Resonance() {
               >
                 {r.desc}
               </div>
-            </div>
+            </SpotlightBorder>
           ))}
         </div>
       </div>
     </section>
+    </CurtainReveal>
   )
 }

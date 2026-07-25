@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { clsx } from 'clsx'
 import { revealOnEnter } from '@/lib/reveal'
+import { MagneticCard } from '@/components/effects/MagneticCard'
+import { ChromaGrid } from '@/components/effects/ChromaGrid'
 
 const tracks = [
   { number: 1, title: 'Dhyana', duration: '5:42', sanskrit: 'ध्यान', meaning: 'Meditation' },
@@ -16,13 +18,39 @@ const tracks = [
 export function Release() {
   const sectionRef = useRef<HTMLElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
-  const [tilt, setTilt] = useState({ x: 0, y: 0, rotateX: 0, rotateY: 0 })
+  const [tilt, setTilt] = useState({ x: 0.5, y: 0.5, rotateX: 0, rotateY: 0 })
 
   useEffect(() => {
     const root = sectionRef.current
     if (!root) return
     const disposers: Array<() => void> = []
     ;(async () => {
+      const gsap = (await import('gsap')).default
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+      gsap.registerPlugin(ScrollTrigger)
+
+      const card = cardRef.current
+      if (card) {
+        const ctx = gsap.context(() => {
+          gsap.fromTo(
+            card,
+            { y: 0, scale: 1 },
+            {
+              y: -80,
+              scale: 0.96,
+              ease: 'none',
+              scrollTrigger: {
+                trigger: root,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1.5,
+              },
+            }
+          )
+        }, root)
+        disposers.push(() => ctx.revert())
+      }
+
       disposers.push(await revealOnEnter(root.querySelectorAll('.release-cover'), { y: 0, scale: 1.05, duration: 1.2 }))
       disposers.push(await revealOnEnter(root.querySelectorAll('.release-info'), { y: 0, x: 40, duration: 0.9 }))
       disposers.push(await revealOnEnter(root.querySelectorAll('.track-row'), { y: 25, duration: 0.7, stagger: 0.08 }))
@@ -82,57 +110,55 @@ export function Release() {
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-28 items-start">
           {/* 4. Concentric frame tunnel on Upeksha cover + 8. geometric masking */}
           <div className="release-cover w-full md:w-3/4 lg:w-1/2 group perspective">
-            <div
-              ref={cardRef}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              className="relative aspect-square overflow-hidden border border-gold/15 bg-void-raised transition-all duration-500 ease-out group-hover:border-gold/30 frame-tunnel inset-circle-mask"
-              style={{
-                transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
-                boxShadow: '0 0 80px rgba(212,168,67,0.08), 0 0 150px rgba(62,123,153,0.04)',
-              }}
-            >
-              <Image
-                src="/covers/BrindavanGardens.webp"
-                alt="Upekṣā — Brindavan Gardens album cover art, Manteis Recordings MR-007"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-              {/* Nested warm gold tunnel frames */}
-              <div className="tunnel-ring" />
-              <div className="tunnel-ring" />
-              <div className="tunnel-ring" />
-              <div className="tunnel-ring" />
-              <div className="tunnel-ring" />
-
-              {/* 6. Parallel line pattern overlay like devotional text */}
-              <div className="parallel-overlay parallel-lines opacity-30 z-20" aria-hidden="true" />
-
-              {/* Inner ambient overlay */}
+            <MagneticCard className="relative aspect-square overflow-hidden border border-gold/15 bg-void-raised transition-all duration-500 ease-out group-hover:border-gold/30 frame-tunnel inset-circle-mask">
               <div
-                className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20"
-                style={{
-                  opacity: 0.7 + (1 - tilt.y) * 0.3,
-                  background: `radial-gradient(circle at ${tilt.x * 100}% ${tilt.y * 100}%, rgba(212,168,67,0.16) 0%, transparent 55%)`,
-                }}
-              />
-              {/* Silkscreen label */}
-              <div className="absolute bottom-4 left-4 z-30">
-                <span className="font-mono text-[10px] tracking-[0.25em] uppercase px-3 py-1.5 bg-void/70 text-gold border border-gold/30">
-                  BG-007 // DEVOTIONAL PROTOCOL
-                </span>
-              </div>
+                ref={cardRef}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src="/covers/BrindavanGardens.webp"
+                  alt="Upekṣā — Brindavan Gardens album cover art, Manteis Recordings MR-007"
+                  fill
+                  className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+                <ChromaGrid />
 
-              {/* 9. Stamp texture badge */}
-              <div className="absolute top-4 right-4 z-30 mandala-stamp w-16 h-16 md:w-20 md:h-20">
-                <span className="font-mono text-[9px] md:text-[10px] tracking-[0.1em] text-gold text-center leading-tight">
-                  MR
-                  <br />007
-                </span>
+                {/* Nested warm gold tunnel frames */}
+                <div className="tunnel-ring" />
+                <div className="tunnel-ring" />
+                <div className="tunnel-ring" />
+                <div className="tunnel-ring" />
+                <div className="tunnel-ring" />
+
+                {/* 6. Parallel line pattern overlay like devotional text */}
+                <div className="parallel-overlay parallel-lines opacity-30 z-20" aria-hidden="true" />
+
+                {/* Inner ambient overlay */}
+                <div
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20"
+                  style={{
+                    opacity: 0.7,
+                    background: 'radial-gradient(circle at 50% 50%, rgba(212,168,67,0.12) 0%, transparent 55%)',
+                  }}
+                />
+                {/* Silkscreen label */}
+                <div className="absolute bottom-4 left-4 z-30">
+                  <span className="font-mono text-[10px] tracking-[0.25em] uppercase px-3 py-1.5 bg-void/70 text-gold border border-gold/30">
+                    BG-007 // DEVOTIONAL PROTOCOL
+                  </span>
+                </div>
+
+                {/* 9. Stamp texture badge */}
+                <div className="absolute top-4 right-4 z-30 mandala-stamp w-16 h-16 md:w-20 md:h-20">
+                  <span className="font-mono text-[9px] md:text-[10px] tracking-[0.1em] text-gold text-center leading-tight">
+                    MR
+                    <br />007
+                  </span>
+                </div>
               </div>
-            </div>
+            </MagneticCard>
           </div>
 
           {/* Release Description, Tracklist & Links */}
