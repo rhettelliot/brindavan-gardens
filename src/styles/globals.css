@@ -224,6 +224,19 @@ body {
     radial-gradient(circle at 75% 70%, rgba(212, 168, 67, 0.05) 0%, transparent 45%);
 }
 
+/* Warm vignette — top/bottom fade for atmospheric depth */
+.warm-vignette {
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Gold text glow — inner text-shadow for display headings */
+.text-glow-gold {
+  text-shadow:
+    0 0 20px rgba(212, 168, 67, 0.15),
+    0 0 40px rgba(212, 168, 67, 0.08);
+}
+
 /* 1. Topographic contour lines like temple grounds, warm gold */
 .topographic-overlay {
   position: absolute;
