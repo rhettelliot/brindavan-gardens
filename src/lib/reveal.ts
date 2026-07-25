@@ -2,6 +2,7 @@ type RevealVars = {
   y?: number
   x?: number
   scale?: number
+  opacity?: number
   duration?: number
   stagger?: number
 }
@@ -25,7 +26,7 @@ export async function revealOnEnter(
   if (!els.length) return () => {}
 
   const gsap = (await import('gsap')).default
-  const { y = 40, x = 0, scale = 1, duration = 0.8, stagger = 0 } = vars
+  const { y = 40, x = 0, scale = 1, opacity = 0, duration = 0.8, stagger = 0 } = vars
 
   // Reduced motion: show everything immediately, no transform.
   if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -33,7 +34,7 @@ export async function revealOnEnter(
     return () => {}
   }
 
-  gsap.set(els, { opacity: 0, x, y, scale })
+  gsap.set(els, { opacity, x, y, scale })
 
   const io = new IntersectionObserver(
     (entries, obs) => {

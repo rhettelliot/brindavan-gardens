@@ -147,10 +147,10 @@ export function Gatekeeper() {
         </div>
 
         <div ref={titleRef} className="opacity-0" style={{ filter: 'blur(12px)' }}>
-          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-semibold italic tracking-[-0.03em] leading-[0.8] text-gold-pale text-glow-gold">
+          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-semibold italic tracking-[-0.03em] leading-[0.8] text-cream text-glow-gold">
             Brindavan
           </h2>
-          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-normal tracking-[-0.03em] leading-[0.8] text-light mt-2">
+          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-normal tracking-[-0.03em] leading-[0.8] text-gold mt-2">
             Gardens
           </h2>
         </div>
@@ -159,7 +159,7 @@ export function Gatekeeper() {
           ref={subRef}
           className="opacity-0 font-mono text-[11px] tracking-[0.4em] uppercase mt-10 text-gold-dim"
         >
-          Spiritual · Shoegaze · Dream
+          Spiritual · Shoegaze · Dream · MR-007
         </p>
 
         <div className="mt-12">
@@ -175,7 +175,7 @@ export function Gatekeeper() {
       </div>
 
       <div className="absolute top-8 left-8 font-mono text-[10px] tracking-[0.2em] text-gold-dim">
-        MR-001
+        BG-007
       </div>
       <div className="absolute top-8 right-8 font-mono text-[10px] tracking-[0.2em] animate-pulse text-gold">
         ◦ OM
@@ -189,4 +189,3 @@ export function Gatekeeper() {
     </div>
   )
 }
-
