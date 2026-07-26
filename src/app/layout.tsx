@@ -217,7 +217,7 @@ const breadcrumbSchema = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#000000',
+  themeColor: '#0D0F12',
   colorScheme: 'dark',
   width: 'device-width',
   initialScale: 1,
@@ -247,7 +247,7 @@ export default function RootLayout({
         />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <noscript>
-          <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000000', color: '#D4A843', fontFamily: 'monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', padding: 24 }}>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0D0F12', color: '#D4A843', fontFamily: 'monospace', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', textAlign: 'center', padding: 24 }}>
             Brindavan Gardens is an interactive experience — enable JavaScript to enter.
           </div>
         </noscript>
