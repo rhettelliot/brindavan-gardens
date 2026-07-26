@@ -3,505 +3,194 @@
 @tailwind utilities;
 
 :root {
-  --void: #000000;
-  --void-raised: #0C0C0C;
-  --void-elevated: #141414;
-  --void-floating: #1C1C1C;
+  /* Surfaces — dark slate, not pure black */
+  --color-canvas: #0D0F12;
+  --color-surface: #15181E;
+  --color-surface-hi: #1A1E24;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hi: rgba(255, 255, 255, 0.14);
+  --color-cream: #F4F3EE;
 
-  --gold: #D4A843;
-  --gold-dim: #A8862F;
-  --gold-pale: #E6C87D;
-  --gold-warm: #C99A35;
-  --gold-soft: rgba(212, 168, 67, 0.22);
-  --gold-glow: rgba(212, 168, 67, 0.15);
+  /* Ink — surface-tinted, NEVER flat gray */
+  --color-ink: #F4F3EE;
+  --color-ink-2: #9EA4B0;
+  --color-ink-3: #5C6370;
+  --color-ink-ghost: rgba(244, 243, 238, 0.20);
 
-  --light: #EDE6DA;
-  --light-dim: #ADA495;
-  --light-muted: #8B7D70;
-  --cream: #F5ECDD;
+  /* Signal — solar orange, the ONLY accent */
+  --color-signal: #FF5500;
+  --color-signal-dim: rgba(255, 85, 0, 0.15);
 
-  --edge-faint: rgba(212, 168, 67, 0.08);
-  --edge-subtle: rgba(212, 168, 67, 0.15);
-  --edge-medium: rgba(212, 168, 67, 0.25);
-  --edge-bright: rgba(212, 168, 67, 0.45);
+  /* Solar ignition gradient stops */
+  --color-solar-core: #FFE566;
+  --color-solar-blaze: #FF5500;
+  --color-solar-amber: #B33600;
+
+  /* Fonts */
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-radius: 0;
+@layer base {
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink-2);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 {
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+  }
 }
 
-html {
-  background: var(--void);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background: var(--void);
-  color: var(--cream);
-  overflow-x: hidden;
-}
-
-::selection {
-  background: var(--gold);
-  color: var(--void);
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: var(--void);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--edge-subtle);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-dim);
-}
-
-/* Noise Overlay — analog grain */
-.noise-overlay {
+/* ─── GLOBAL GRAIN — 6% opacity, one layer ─── */
+.grain {
   position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  content: "";
-  opacity: 0.045;
   pointer-events: none;
-  z-index: 99;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 9999;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Awwwards overdrive motion tokens */
-.tilt-card,
-.perspective,
-.magnetic-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.curtain-section {
-  position: relative;
-  overflow: hidden;
-}
-
-.scroll-strobe {
-  pointer-events: none;
-  mix-blend-mode: screen;
-  z-index: 1;
-}
-
-.gold-dust {
-  pointer-events: none;
-  mix-blend-mode: screen;
-  z-index: 2;
-}
-
-.spotlight-border {
-  background-clip: padding-box, border-box;
-}
-
-.chroma-grid {
-  pointer-events: none;
-  mix-blend-mode: screen;
-}
-
-/* Sanskrit marquee */
-.sanskrit-marquee {
-  will-change: transform;
-}
-
-/* Parallax mandala */
-.parallax-mandala {
-  will-change: transform;
-  pointer-events: none;
-}
-
-/* Void panel */
-.void-panel {
-  background: var(--void-raised);
-  border: 1px solid var(--edge-faint);
-  transition: border-color 0.4s ease;
-}
-.void-panel:hover {
-  border-color: var(--edge-subtle);
-}
-
-/* Reduced motion */
-.section-label {
-  @apply font-mono text-[11px] tracking-[0.4em] uppercase text-light-muted flex items-center gap-4;
-}
-.section-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--edge-subtle);
-}
-.section-label .idx {
-  @apply text-gold font-semibold tracking-normal mr-1;
-}
-
-/* Reduced motion override */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  .scroll-strobe,
-  .gold-dust,
-  .chroma-grid,
-  .parallax-mandala {
-    display: none !important;
-  }
-}
-
-/* Sacred Gold Thread */
-.gold-thread {
-  color: var(--cream);
-}
-
-/* Premium Button */
-.btn-premium-gold {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 1px solid rgba(212, 168, 67, 0.3);
-  background: transparent;
-  color: var(--gold);
-  min-width: 44px;
-  min-height: 44px;
-  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-premium-gold::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--gold);
-  transform: scaleY(0);
-  transform-origin: bottom;
-  z-index: -1;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.btn-premium-gold:hover {
-  color: var(--void);
-  border-color: var(--gold);
-  box-shadow: 0 0 25px rgba(212, 168, 67, 0.25);
-}
-.btn-premium-gold:hover::before {
-  transform: scaleY(1);
-  transform-origin: top;
-}
-
-/* Hairlines */
-.hairline {
-  height: 1px;
-  background: var(--edge-medium);
-}
-.hairline-signal {
-  height: 1px;
-  background: var(--gold);
-}
-
-/* Warm glow overlay */
-.warm-glow {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 25% 30%, rgba(212, 168, 67, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 75% 70%, rgba(212, 168, 67, 0.05) 0%, transparent 45%);
-}
-
-/* Warm vignette — top/bottom fade for atmospheric depth */
-.warm-vignette {
-  pointer-events: none;
-  z-index: 5;
-}
-
-/* Gold text glow — inner text-shadow for display headings */
-.text-glow-gold {
-  text-shadow:
-    0 0 20px rgba(212, 168, 67, 0.15),
-    0 0 40px rgba(212, 168, 67, 0.08);
-}
-
-/* 1. Topographic contour lines like temple grounds, warm gold */
-.topographic-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
-  background-image:
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 8%, rgba(212,168,67,0.28) 9%, rgba(212,168,67,0.28) 10%, transparent 11%),
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 18%, rgba(212,168,67,0.22) 19%, rgba(212,168,67,0.22) 20%, transparent 21%),
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 28%, rgba(212,168,67,0.18) 29%, rgba(212,168,67,0.18) 30%, transparent 31%),
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 38%, rgba(212,168,67,0.14) 39%, rgba(212,168,67,0.14) 40%, transparent 41%),
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 48%, rgba(212,168,67,0.10) 49%, rgba(212,168,67,0.10) 50%, transparent 51%),
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 58%, rgba(212,168,67,0.08) 59%, rgba(212,168,67,0.08) 60%, transparent 61%),
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 68%, rgba(212,168,67,0.06) 69%, rgba(212,168,67,0.06) 70%, transparent 71%),
-    radial-gradient(circle at 50% 55%, transparent 0%, transparent 78%, rgba(212,168,67,0.05) 79%, rgba(212,168,67,0.05) 80%, transparent 81%);
-  mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 100%);
-  animation: topo-breathe 10s ease-in-out infinite;
-}
-
-@keyframes topo-breathe {
-  0%, 100% { opacity: 0.45; transform: scale(1); }
-  50% { opacity: 0.65; transform: scale(1.03); }
-}
-
-/* 2. Visible grid lines — subtle, warm-toned */
+/* ─── VISIBLE GRID LINES ─── */
 .grid-lines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(212,168,67,0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(212,168,67,0.06) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse at center, black 55%, transparent 90%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 90%);
+  background-image: linear-gradient(to right, var(--color-border) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
 }
 
-/* 3. Massive catalog number MR-007 display art */
-.catalog-display {
-  font-family: var(--font-mono), monospace;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 0.75;
-  color: var(--cream);
-  opacity: 0.08;
-  user-select: none;
-  pointer-events: none;
-}
-
-/* 4. Concentric frame tunnel */
-.frame-tunnel {
-  position: relative;
-}
-.frame-tunnel::before {
-  content: "";
+/* ─── SOLAR GLOW — multi-layered volumetric light ─── */
+.solar-glow {
   position: absolute;
-  inset: 0;
+  border-radius: 50%;
   pointer-events: none;
-  z-index: 20;
-  background:
-    conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(212,168,67,0.08) 20deg, transparent 40deg, rgba(212,168,67,0.06) 60deg, transparent 80deg, rgba(212,168,67,0.08) 100deg, transparent 120deg, rgba(212,168,67,0.06) 140deg, transparent 160deg, rgba(212,168,67,0.08) 180deg, transparent 200deg, rgba(212,168,67,0.06) 220deg, transparent 240deg, rgba(212,168,67,0.08) 260deg, transparent 280deg, rgba(212,168,67,0.06) 300deg, transparent 320deg, rgba(212,168,67,0.08) 340deg, transparent 360deg);
-  opacity: 0.35;
-}
-.frame-tunnel .tunnel-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgba(212,168,67,0.18);
-  border-radius: 0;
-  pointer-events: none;
-  z-index: 15;
-}
-.frame-tunnel .tunnel-ring:nth-child(1) { width: 85%; height: 85%; opacity: 0.9; }
-.frame-tunnel .tunnel-ring:nth-child(2) { width: 70%; height: 70%; opacity: 0.7; }
-.frame-tunnel .tunnel-ring:nth-child(3) { width: 55%; height: 55%; opacity: 0.5; }
-.frame-tunnel .tunnel-ring:nth-child(4) { width: 40%; height: 40%; opacity: 0.35; }
-.frame-tunnel .tunnel-ring:nth-child(5) { width: 25%; height: 25%; opacity: 0.2; }
-
-/* 5. Orbital path curves — mandala-like SVG */
-.orbital-curve {
-  fill: none;
-  stroke: rgba(212,168,67,0.18);
-  stroke-width: 1;
-}
-.orbital-curve-thin {
-  fill: none;
-  stroke: rgba(212,168,67,0.10);
-  stroke-width: 0.5;
-}
-.orbital-glow {
-  fill: none;
-  stroke: rgba(212,168,67,0.35);
-  stroke-width: 1.2;
-  filter: drop-shadow(0 0 6px rgba(212,168,67,0.4));
-}
-
-/* 6. Parallel line pattern overlay like devotional text columns */
-.parallel-lines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 7px,
-    rgba(212,168,67,0.08) 7px,
-    rgba(212,168,67,0.08) 8px
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 229, 102, 0.18) 0%,
+    rgba(255, 85, 0, 0.12) 25%,
+    rgba(179, 54, 0, 0.06) 50%,
+    transparent 70%
   );
-  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  filter: blur(40px);
 }
 
-/* 7. Technical metadata mono data block */
-.mono-data {
-  font-family: var(--font-mono), monospace;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--light-muted);
+.cool-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(159, 168, 218, 0.10) 0%,
+    rgba(13, 59, 62, 0.06) 40%,
+    transparent 70%
+  );
+  filter: blur(50px);
 }
 
-/* 8. Geometric masking — circles and lotus-like shapes */
-.circle-mask {
-  clip-path: circle(48% at 50% 50%);
-}
-.lotus-mask {
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-}
-.lotus-mask-soft {
-  clip-path: polygon(50% 8%, 60% 38%, 94% 38%, 67% 57%, 76% 88%, 50% 70%, 24% 88%, 33% 57%, 6% 38%, 40% 38%);
-}
-.inset-circle-mask {
-  clip-path: circle(42% at 50% 50%);
-}
-
-/* 9. Stamp/badge textures — circular mandala stamps */
-.mandala-stamp {
+/* ─── BENTO CARD ─── */
+.bento {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(212,168,67,0.25);
-  color: var(--gold-dim);
-  background: radial-gradient(circle, rgba(212,168,67,0.04) 0%, transparent 70%);
+  overflow: hidden;
 }
-.mandala-stamp::before {
+
+.bento::before {
   content: "";
   position: absolute;
-  inset: 6px;
-  border: 1px dashed rgba(212,168,67,0.2);
-  border-radius: 50%;
-}
-.mandala-stamp::after {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(212,168,67,0.12);
-  border-radius: 50%;
-}
-
-/* Perspective wrapper for parallax tilt cards */
-.perspective {
-  perspective: 1200px;
-}
-
-/* Parallax tilt inner */
-.tilt-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-/* Masonry cell base */
-.masonry-cell {
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-/* Sanskrit label pill */
-.sanskrit-pill {
-  font-family: var(--font-mono), monospace;
-  font-size: 9px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold-dim);
-  border: 1px solid var(--edge-subtle);
-  padding: 0.35rem 0.7rem;
-  background: rgba(212,168,67,0.03);
-}
-
-/* Warm paper texture overlay */
-.paper-texture {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E");
-}
-
-/* Devotional art border bracket */
-.bracket-corner {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-color: rgba(212,168,67,0.28);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: radial-gradient(ellipse at bottom, rgba(255, 85, 0, 0.06) 0%, transparent 60%);
   pointer-events: none;
 }
-.bracket-corner.tl { top: 0; left: 0; border-top: 1px solid; border-left: 1px solid; }
-.bracket-corner.tr { top: 0; right: 0; border-top: 1px solid; border-right: 1px solid; }
-.bracket-corner.bl { bottom: 0; left: 0; border-bottom: 1px solid; border-left: 1px solid; }
-.bracket-corner.br { bottom: 0; right: 0; border-bottom: 1px solid; border-right: 1px solid; }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+/* ─── DISPLAY NUMBER ─── */
+.display-num {
+  font-family: var(--font-display);
+  font-weight: 200;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  color: var(--color-ink-ghost);
 }
 
-/* Keyboard navigation */
-:focus-visible {
-  outline: 2px solid #d4a843;
-  outline-offset: 3px;
-  border-radius: 0;
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* Anchored sections land below the fixed nav */
-section[id] {
-  scroll-margin-top: 88px;
-}
-
-/* Skip link */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  z-index: 1001;
-  padding: 0.75rem 1rem;
-  background: var(--void);
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  font-family: var(--font-mono), monospace;
+/* ─── MONO METADATA ─── */
+.meta {
+  font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.15em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-3);
   text-transform: uppercase;
-  min-width: 44px;
+}
+
+/* ─── SIGNAL BUTTON ─── */
+.btn {
+  background: var(--color-signal);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
 }
-.skip-link:focus-visible {
-  position: fixed;
-  left: 1rem;
-  top: 1rem;
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--color-signal);
+  outline-offset: 3px;
+}
+
+/* ─── HAIRLINE DIVIDER ─── */
+.hairline {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 1.5rem 0;
+}
+
+/* ─── DITHERED GRADIENT ─── */
+.dithered-gradient {
+  position: relative;
+}
+.dithered-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+/* ─── CLIP PATH GEOMETRIC MASKING ─── */
+.clip-triangle {
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+.clip-hex {
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+.clip-diamond {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+.clip-slit {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 20%, 0% 20%, 0% 30%, 100% 30%, 100% 50%, 0% 50%, 0% 60%, 100% 60%, 100% 80%, 0% 80%, 0% 90%, 100% 90%, 100% 100%, 0% 100%);
 }
