@@ -65,7 +65,7 @@ export function SanskritMarquee() {
       {terms.map((item, i) => (
         <span
           key={`${i}-${item.sanskrit}`}
-          className={`inline-flex items-baseline gap-4 px-8 font-display text-3xl md:text-5xl lg:text-6xl italic tracking-[-0.02em] transition-colors duration-500 ${glow ? 'text-gold text-glow-gold' : 'text-gold-dim'}`}
+          className={`inline-flex items-baseline gap-4 px-8 font-display text-[clamp(1.5rem,7vw,4rem)] md:text-5xl lg:text-6xl italic tracking-[-0.02em] transition-colors duration-500 ${glow ? 'text-gold text-glow-gold' : 'text-gold-dim'}`}
         >
           <span className="sanskrit-pill border-none bg-transparent px-0">{item.sanskrit}</span>
           <span className={`font-mono text-xs md:text-sm tracking-[0.3em] uppercase ${glow ? 'text-gold-pale' : 'text-light-muted'}`}>

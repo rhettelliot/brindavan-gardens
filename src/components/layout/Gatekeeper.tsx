@@ -147,10 +147,10 @@ export function Gatekeeper() {
         </div>
 
         <div ref={titleRef} className="opacity-0" style={{ filter: 'blur(12px)' }}>
-          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-semibold italic tracking-[-0.03em] leading-[0.8] text-cream text-glow-gold">
+          <h2 className="font-display text-[clamp(3rem,16vw,11rem)] md:text-[clamp(7rem,12vw,11rem)] font-semibold italic tracking-[-0.03em] leading-[0.8] text-cream text-glow-gold">
             Brindavan
           </h2>
-          <h2 className="font-display text-7xl md:text-[9rem] lg:text-[11rem] font-normal tracking-[-0.03em] leading-[0.8] text-gold mt-2">
+          <h2 className="font-display text-[clamp(3rem,16vw,11rem)] md:text-[clamp(7rem,12vw,11rem)] font-normal tracking-[-0.03em] leading-[0.8] text-gold mt-2">
             Gardens
           </h2>
         </div>

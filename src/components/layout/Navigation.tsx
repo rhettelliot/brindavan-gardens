@@ -14,7 +14,7 @@ export function Navigation() {
 
   return (
     <nav aria-label="Primary" className="fixed top-0 left-0 right-0 z-40 backdrop-blur-2xl bg-void/70 border-b border-edge-faint shadow-[0_4px_30px_rgba(0,0,0,0.4)]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
         <a
           href="#"
           aria-label="Brindavan Gardens home"

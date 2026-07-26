@@ -57,7 +57,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-void">
+    <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-void pt-16 md:pt-0">
       {/* 1. Topographic contour lines like temple grounds, warm gold */}
       <div ref={topoRef} className="topographic-overlay" aria-hidden="true" />
 
@@ -89,10 +89,10 @@ export function Hero() {
 
       {/* Title — defaults to visible; GSAP animates from invisible */}
       <div ref={titleRef} className="relative z-10 text-center px-6">
-        <h1 className="font-display text-8xl md:text-[11rem] lg:text-[14rem] font-semibold italic tracking-[-0.03em] leading-[0.78] text-cream text-glow-gold select-none">
+        <h1 className="font-display text-[clamp(3rem,16vw,14rem)] md:text-[clamp(8rem,13vw,14rem)] font-semibold italic tracking-[-0.03em] leading-[0.78] text-cream text-glow-gold select-none">
           Brindavan
         </h1>
-        <h2 className="font-display text-8xl md:text-[11rem] lg:text-[14rem] font-normal tracking-[-0.03em] leading-[0.78] text-gold select-none mt-2">
+        <h2 className="font-display text-[clamp(3rem,16vw,14rem)] md:text-[clamp(8rem,13vw,14rem)] font-normal tracking-[-0.03em] leading-[0.78] text-gold select-none mt-2">
           Gardens
         </h2>
       </div>

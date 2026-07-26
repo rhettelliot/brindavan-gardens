@@ -72,7 +72,7 @@ export function Mantra() {
         <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-void to-transparent pointer-events-none z-10" />
         <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-void to-transparent pointer-events-none z-10" />
 
-        <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-20">
+        <div className="max-w-6xl mx-auto px-6 md:px-10 relative z-20">
           <div className="section-label mb-24">
             <span className="idx">03 //</span> Mantra
           </div>
@@ -92,7 +92,7 @@ export function Mantra() {
                 <div key={i} className="mantra-line group/line flex flex-col md:flex-row md:items-baseline gap-3 md:gap-8 border-b border-edge-faint pb-8">
                   <span className="font-mono text-[10px] text-gold-dim w-8">{String(i + 1).padStart(2, '0')}</span>
                   <p
-                    className={`font-display text-3xl md:text-5xl lg:text-[4rem] leading-[1.1] tracking-[-0.02em] transition-all duration-500 ease-out cursor-default hover:translate-x-2 group-hover/mantra-wall:opacity-25 hover:!opacity-100 flex-1 ${lineStyle}`}
+                    className={`font-display text-[clamp(1.5rem,7vw,3.5rem)] md:text-[clamp(2.5rem,5vw,4rem)] leading-[1.1] tracking-[-0.02em] transition-all duration-500 ease-out cursor-default hover:translate-x-2 group-hover/mantra-wall:opacity-25 hover:!opacity-100 flex-1 ${lineStyle}`}
                   >
                     {item.line}
                   </p>

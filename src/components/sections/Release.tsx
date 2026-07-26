@@ -80,7 +80,7 @@ export function Release() {
   return (
     <section ref={sectionRef} id="release" className="relative py-32 md:py-48 overflow-hidden bg-void">
       {/* 3. Massive catalog number MR-007 as display art */}
-      <div className="catalog-art absolute left-0 top-8 md:top-16 w-full text-center text-[28vw] md:text-[22vw] catalog-display z-0 select-none pointer-events-none">
+      <div className="catalog-art absolute left-0 top-8 md:top-16 w-full text-center text-[clamp(5rem,28vw,22rem)] md:text-[22vw] catalog-display z-0 select-none pointer-events-none">
         MR-007
       </div>
 
@@ -102,14 +102,14 @@ export function Release() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-20">
         <div className="section-label mb-24">
           <span className="idx">01 //</span> Release
         </div>
 
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-28 items-start">
           {/* 4. Concentric frame tunnel on Upeksha cover + 8. geometric masking */}
-          <div className="release-cover w-full md:w-3/4 lg:w-1/2 group perspective">
+          <div className="release-cover w-full md:w-3/4 lg:w-1/2 group perspective col-span-12 lg:col-span-6">
             <MagneticCard className="relative aspect-square overflow-hidden border border-gold/15 bg-void-raised transition-all duration-500 ease-out group-hover:border-gold/30 frame-tunnel inset-circle-mask">
               <div
                 ref={cardRef}
@@ -167,7 +167,7 @@ export function Release() {
               MR-007 · MANTEIS RECORDINGS · STEREO · 33:30
             </div>
             <h2
-              className="font-display text-6xl md:text-8xl lg:text-[6.5rem] font-semibold italic tracking-[-0.03em] leading-[0.82] mb-4 text-cream text-glow-gold"
+              className="font-display text-[clamp(2.75rem,12vw,7rem)] md:text-[clamp(5rem,9vw,7rem)] font-semibold italic tracking-[-0.03em] leading-[0.82] mb-4 text-cream text-glow-gold"
             >
               Upekṣā
             </h2>
@@ -192,7 +192,7 @@ export function Release() {
                   <div
                     key={track.number}
                     className={clsx(
-                      'track-row void-panel p-4 flex items-center justify-between group/track cursor-default',
+                      'track-row void-panel p-4 flex items-center justify-between group/track cursor-default min-h-[44px]',
                       track.number === 5 && 'sm:col-span-2'
                     )}
                   >
@@ -227,7 +227,7 @@ export function Release() {
                   href="https://distrokid.com/hyperfollow/brindavangardens/upek/"
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="platform-link btn-premium-gold font-mono text-[10px] tracking-[0.3em] uppercase px-8 py-4"
+                  className="platform-link btn-premium-gold inline-flex items-center justify-center min-h-[44px] font-mono text-[10px] tracking-[0.3em] uppercase px-8 py-4"
                 >
                   Listen on All Platforms
                 </a>
@@ -236,7 +236,7 @@ export function Release() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label="Listen to Brindavan Gardens Upekṣā on Spotify"
-                  className="platform-link relative font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold py-1 group"
+                  className="platform-link relative inline-flex items-center min-h-[44px] font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold py-1 group"
                 >
                   Spotify →
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -246,7 +246,7 @@ export function Release() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label="Listen to Brindavan Gardens Upekṣā on Apple Music"
-                  className="platform-link relative font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold py-1 group"
+                  className="platform-link relative inline-flex items-center min-h-[44px] font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold py-1 group"
                 >
                   Apple Music →
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -256,7 +256,7 @@ export function Release() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label="Purchase Brindavan Gardens Upekṣā on Bandcamp"
-                  className="platform-link relative font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold py-1 group"
+                  className="platform-link relative inline-flex items-center min-h-[44px] font-mono text-[10px] tracking-[0.2em] uppercase transition-colors duration-300 text-gold-dim hover:text-gold py-1 group"
                 >
                   Bandcamp →
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />

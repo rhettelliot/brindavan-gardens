@@ -38,7 +38,7 @@ export function CTASection() {
         <circle cx="200" cy="200" r="60" className="orbital-curve-thin" />
       </svg>
 
-      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-20 text-center">
+      <div className="max-w-5xl mx-auto px-6 md:px-10 relative z-20 text-center">
         {/* Invitation Card */}
         <div className="cta-content void-panel py-20 px-8 md:px-16 relative overflow-hidden border border-gold/15">
           {/* Corner structural bracket designs */}
@@ -62,7 +62,7 @@ export function CTASection() {
           </div>
 
           <h2
-            className="font-display text-4xl md:text-6xl lg:text-[4.5rem] font-semibold italic tracking-[-0.03em] leading-[1.08] text-cream text-glow-gold mb-6"
+            className="font-display text-[clamp(2rem,9vw,5rem)] md:text-[clamp(3.5rem,7vw,5rem)] font-semibold italic tracking-[-0.03em] leading-[1.08] text-cream text-glow-gold mb-6"
           >
             Bring your frequency <br className="hidden md:block" />to the garden.
           </h2>
@@ -74,7 +74,7 @@ export function CTASection() {
           <div className="mt-12">
             <a
               href="mailto:demo@manteisrecordings.com"
-              className="btn-premium-gold font-mono text-[11px] tracking-[0.3em] uppercase px-10 py-5"
+              className="btn-premium-gold inline-flex items-center justify-center min-h-[44px] font-mono text-[11px] tracking-[0.3em] uppercase px-10 py-5"
             >
               Submit Demo
             </a>

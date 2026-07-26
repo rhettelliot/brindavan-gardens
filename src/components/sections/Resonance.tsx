@@ -45,7 +45,7 @@ export function Resonance() {
         <path className="orbital-glow" d="M50,100 C150,40 250,40 350,100" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-20">
         <div className="section-label mb-20">
           <span className="idx">04 //</span> Resonance
         </div>
@@ -63,7 +63,7 @@ export function Resonance() {
               </div>
 
               {/* 8. Geometric circle masking on value */}
-              <div className={`font-mono text-6xl md:text-7xl font-bold tracking-[-0.05em] transition-transform duration-500 group-hover:scale-105 ${r.color} circle-mask`}
+              <div className={`font-mono text-[clamp(3rem,12vw,6rem)] md:text-7xl font-bold tracking-[-0.05em] transition-transform duration-500 group-hover:scale-105 ${r.color} circle-mask`}
               >
                 {r.label}
               </div>

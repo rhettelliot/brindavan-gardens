@@ -11,11 +11,11 @@ export function Footer() {
         <path className="orbital-curve-thin" d="M30,30 C90,10 210,10 270,30 C210,50 90,50 30,30" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
           {/* Brand/Logo Column — 6 cols */}
           <div className="md:col-span-6 space-y-4">
-            <h3 className="font-display text-3xl md:text-4xl font-semibold italic tracking-[-0.02em] text-cream text-glow-gold">
+            <h3 className="font-display text-2xl md:text-4xl font-semibold italic tracking-[-0.02em] text-cream text-glow-gold">
               Brindavan <span className="text-gold font-normal not-italic">Gardens</span>
             </h3>
             <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold-dim">
@@ -35,21 +35,21 @@ export function Footer() {
             <div className="flex flex-col gap-2">
               <a
                 href="#"
-                className="font-mono text-[11px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+                className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Home
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
               <a
                 href="#release"
-                className="font-mono text-[11px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+                className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Release
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
               </a>
               <a
                 href="#mantra"
-                className="font-mono text-[11px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+                className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.25em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Mantra
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -68,7 +68,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Listen to Brindavan Gardens on all streaming platforms (opens in new tab)"
-                className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+                className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 All Platforms
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -78,7 +78,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Listen to Brindavan Gardens on Spotify (opens in new tab)"
-                className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+                className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Spotify
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -88,7 +88,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Listen to Brindavan Gardens on Apple Music (opens in new tab)"
-                className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+                className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Apple Music
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -98,7 +98,7 @@ export function Footer() {
                 target="_blank"
                 rel="noreferrer noopener"
                 aria-label="Purchase Brindavan Gardens on Bandcamp (opens in new tab)"
-                className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+                className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
               >
                 Bandcamp
                 <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -118,7 +118,7 @@ export function Footer() {
               target="_blank"
               rel="noreferrer noopener"
               aria-label="Visit Manteis Recordings label hub (opens in new tab)"
-              className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
+              className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5"
             >
               Manteis Recordings ↗
               <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" />
@@ -129,10 +129,10 @@ export function Footer() {
               Roster
             </span>
             <div className="flex flex-col gap-1.5">
-              <a href="https://redshiftmantra.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Red Shift Mantra artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Red Shift Mantra ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
-              <a href="https://manteis-project-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit The Manteis Project artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">The Manteis Project ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
-              <a href="https://thesan-musique-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Thesan Musique artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Thesan Musique ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
-              <a href="https://bethany-pritchett-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Bethany Pritchett artist site (opens in new tab)" className="font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Bethany Pritchett ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
+              <a href="https://redshiftmantra.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Red Shift Mantra artist site (opens in new tab)" className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Red Shift Mantra ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
+              <a href="https://manteis-project-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit The Manteis Project artist site (opens in new tab)" className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">The Manteis Project ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
+              <a href="https://thesan-musique-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Thesan Musique artist site (opens in new tab)" className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Thesan Musique ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
+              <a href="https://bethany-pritchett-site.vercel.app" target="_blank" rel="noreferrer noopener" aria-label="Visit Bethany Pritchett artist site (opens in new tab)" className="inline-flex items-center min-h-[44px] font-mono text-[11px] tracking-[0.2em] uppercase text-gold-dim hover:text-gold transition-colors duration-300 w-fit group relative py-0.5">Bethany Pritchett ↗<span className="absolute bottom-0 left-0 w-full h-[1px] bg-gold scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100" /></a>
             </div>
           </div>
         </div>

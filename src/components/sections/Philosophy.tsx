@@ -90,7 +90,7 @@ export function Philosophy() {
       }}
     />
 
-    <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20">
+    <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-20">
       <div className="section-label mb-24 split-cell">
         <span className="idx">02 //</span> Devotional Protocol
       </div>
@@ -98,7 +98,7 @@ export function Philosophy() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[80vh] items-center">
         <div
           ref={leftRef}
-          className="split-cell h-full flex flex-col justify-center py-12 lg:py-24 px-6 lg:px-12 border-r border-edge-faint relative"
+          className="split-cell h-full flex flex-col justify-center py-12 lg:py-24 px-6 lg:px-12 border-r border-edge-faint relative col-span-12 lg:col-span-6"
         >
           {/* 9. Mandala stamp */}
           <div className="lotus-node absolute top-8 right-8 mandala-stamp w-20 h-20 md:w-24 md:h-24">
@@ -111,12 +111,12 @@ export function Philosophy() {
           <p className="font-mono text-[10px] tracking-[0.4em] uppercase text-gold mb-8">
             BG-007 // DEVOTIONAL PROTOCOL
           </p>
-          <h2 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-semibold italic tracking-[-0.03em] leading-[0.9] text-cream text-glow-gold mb-10">
+          <h2 className="font-display text-[clamp(2.5rem,10vw,6rem)] md:text-[clamp(4.5rem,7vw,6rem)] font-semibold italic tracking-[-0.03em] leading-[0.9] text-cream text-glow-gold mb-10">
             Sound is
             <br />sanctuary.
           </h2>
           <div className="gold-thread w-24 mb-10" />
-          <p className="font-body text-lg md:text-xl leading-relaxed text-light-dim max-w-md">
+          <p className="font-body text-base md:text-lg leading-relaxed text-light-dim max-w-md">
             Shoegaze walls dissolve into devotional drones. The guitar becomes prayer;
             reverb, cathedral. We write where dream meets devotion — equanimity through
             frequency.
@@ -125,7 +125,7 @@ export function Philosophy() {
 
         <div
           ref={rightRef}
-          className="split-cell h-full flex flex-col justify-center py-12 lg:py-24 px-6 lg:px-16 relative"
+          className="split-cell h-full flex flex-col justify-center py-12 lg:py-24 px-6 lg:px-16 relative col-span-12 lg:col-span-6"
         >
           <div className="space-y-12">
             {[
@@ -145,7 +145,7 @@ export function Philosophy() {
               <div key={i} className="border-b border-edge-faint pb-10">
                 <div className="flex items-center gap-4 mb-3">
                   <span className="font-mono text-[10px] text-gold-dim">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="font-display text-2xl md:text-3xl italic text-gold">
+                  <h3 className="font-display text-xl md:text-3xl italic text-gold">
                     {item.heading}
                   </h3>
                 </div>
