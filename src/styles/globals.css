@@ -30,6 +30,17 @@
   --font-display: "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  /* Gold palette aliases for Tailwind gold-* classes */
+  --color-gold: #D4A843;
+  --color-gold-dim: #A8862F;
+  --color-gold-glow: rgba(212, 168, 67, 0.15);
+  --color-gold-pale: #E6C87D;
+  --color-gold-warm: #C99A35;
+  --color-gold-soft: rgba(212, 168, 67, 0.22);
+  --color-gold-border: rgba(212, 168, 67, 0.35);
+  --color-gold-ghost: rgba(212, 168, 67, 0.1);
+  --color-gold-hairline: rgba(212, 168, 67, 0.08);
 }
 
 @layer base {
@@ -46,6 +57,25 @@
     letter-spacing: -0.03em;
   }
 }
+
+/* ─── GOLD UTILITY CLASSES (static fallback for Tailwind v3 arbitrary opacity) ─── */
+.text-gold { color: var(--color-gold) !important; }
+.text-gold-dim { color: var(--color-gold-dim) !important; }
+.text-gold-pale { color: var(--color-gold-pale) !important; }
+.text-gold-warm { color: var(--color-gold-warm) !important; }
+.bg-gold { background-color: var(--color-gold) !important; }
+.border-gold { border-color: var(--color-gold) !important; }
+.border-gold\/10 { border-color: rgba(212, 168, 67, 0.10) !important; }
+.border-gold\/15 { border-color: rgba(212, 168, 67, 0.15) !important; }
+.border-gold\/30 { border-color: rgba(212, 168, 67, 0.30) !important; }
+.border-gold\/40 { border-color: rgba(212, 168, 67, 0.40) !important; }
+.bg-gold\/\[0\.02\] { background-color: rgba(212, 168, 67, 0.02) !important; }
+.bg-gold\/\[0\.05\] { background-color: rgba(212, 168, 67, 0.05) !important; }
+.text-glow-gold { text-shadow: 0 0 40px rgba(212, 168, 67, 0.22); }
+.text-cream { color: var(--color-cream) !important; }
+.text-light-muted { color: var(--color-ink-2) !important; }
+.text-light-dim { color: var(--color-ink-3) !important; }
+.bg-void\/70 { background-color: rgba(13, 15, 18, 0.70) !important; }
 
 /* ─── GLOBAL GRAIN — 6% opacity, one layer ─── */
 .grain {
@@ -219,4 +249,233 @@
 .border-edge-faint { border-color: var(--color-border) !important; }
 .border-edge { border-color: var(--color-border-hi) !important; }
 .font-display { font-family: var(--font-body) !important; }
+
+@layer utilities {
+  .btn-soft {
+    color: var(--color-ink-2);
+    border-color: var(--color-border-hi);
+    background: transparent;
+    transition: color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  }
+  .btn-soft:hover {
+    color: var(--color-cream);
+    border-color: var(--color-signal);
+    background: var(--color-signal-dim);
+  }
+
+  .link-quiet {
+    color: var(--color-ink-3);
+  }
+  .link-quiet:hover {
+    color: var(--color-signal);
+  }
+
+  .rose-thread,
+  .gold-thread {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-signal), transparent);
+    opacity: 0.6;
+  }
+
+  .sheet-lines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 14px,
+      var(--color-border) 14px,
+      var(--color-border) 15px
+    );
+  }
+
+  .stamp {
+    border: 1px dashed var(--color-border-hi);
+    border-radius: 50%;
+  }
+
+  .void-panel {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-ink-3);
+    text-transform: uppercase;
+  }
+  .section-label .idx {
+    color: var(--color-signal);
+    margin-right: 0.5em;
+  }
+
+  .catalog-display {
+    font-family: var(--font-mono);
+    font-weight: 200;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    color: var(--color-ink-ghost);
+  }
+
+  .orbital-curve {
+    fill: none;
+    stroke: rgba(212, 168, 67, 0.18);
+    stroke-width: 0.5;
+  }
+
+  .orbital-curve-thin {
+    fill: none;
+    stroke: rgba(212, 168, 67, 0.1);
+    stroke-width: 0.35;
+  }
+
+  .orbital-glow {
+    fill: none;
+    stroke: rgba(212, 168, 67, 0.22);
+    stroke-width: 1;
+    filter: drop-shadow(0 0 4px rgba(212, 168, 67, 0.25));
+  }
+
+  .mandala-stamp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(212, 168, 67, 0.3);
+    border-radius: 50%;
+  }
+
+  .parallel-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 12px,
+      rgba(212, 168, 67, 0.04) 12px,
+      rgba(212, 168, 67, 0.04) 13px
+    );
+  }
+
+  .frame-tunnel::before,
+  .frame-tunnel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212, 168, 67, 0.1);
+    pointer-events: none;
+  }
+
+  .inset-circle-mask {
+    clip-path: inset(0 round 4px);
+  }
+
+  .circle-mask {
+    clip-path: circle(48%);
+  }
+
+  .bracket-corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: rgba(212, 168, 67, 0.25);
+  }
+  .bracket-corner.tl { top: 12px; left: 12px; border-top: 1px solid; border-left: 1px solid; }
+  .bracket-corner.tr { top: 12px; right: 12px; border-top: 1px solid; border-right: 1px solid; }
+  .bracket-corner.bl { bottom: 12px; left: 12px; border-bottom: 1px solid; border-left: 1px solid; }
+  .bracket-corner.br { bottom: 12px; right: 12px; border-bottom: 1px solid; border-right: 1px solid; }
+
+  .text-glow-gold {
+    text-shadow: 0 0 40px rgba(212, 168, 67, 0.22);
+  }
+
+  .sanskrit-pill {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-gold-pale);
+    padding: 2px 8px;
+    border: 1px solid rgba(212, 168, 67, 0.3);
+    border-radius: 9999px;
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .warm-vignette {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 12rem;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .btn-premium-gold {
+    color: #0D0F12;
+    background: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    transition: filter 0.2s ease, transform 0.2s ease;
+  }
+  .btn-premium-gold:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+  }
+
+  .topographic-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.55;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 24px,
+      rgba(212, 168, 67, 0.06) 24px,
+      rgba(212, 168, 67, 0.06) 25px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0px,
+      transparent 24px,
+      rgba(212, 168, 67, 0.04) 24px,
+      rgba(212, 168, 67, 0.04) 25px
+    );
+    -webkit-mask-image: radial-gradient(ellipse at 50% 60%, black 0%, transparent 70%);
+    mask-image: radial-gradient(ellipse at 50% 60%, black 0%, transparent 70%);
+  }
+
+  .paper-texture {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .tunnel-ring {
+    position: absolute;
+    inset: 6%;
+    border: 1px solid rgba(212, 168, 67, 0.12);
+    pointer-events: none;
+  }
+  .tunnel-ring:nth-child(2) { inset: 12%; opacity: 0.85; }
+  .tunnel-ring:nth-child(3) { inset: 18%; opacity: 0.7; }
+  .tunnel-ring:nth-child(4) { inset: 24%; opacity: 0.55; }
+  .tunnel-ring:nth-child(5) { inset: 30%; opacity: 0.4; }
+
+  .mono-data {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-ink-3);
+  }
+}
 

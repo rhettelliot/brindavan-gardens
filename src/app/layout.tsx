@@ -230,7 +230,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrains.variable}`}>
-      <body className="bg-[#0D0F12] text-[#9EA4B0] antialiased">
+      <body className="bg-[#0D0F12] text-[#F4F3EE] antialiased">
         <div className="grain" />
         {/* JSON-LD structured data — triple schema for max rich result eligibility */}
         <script
